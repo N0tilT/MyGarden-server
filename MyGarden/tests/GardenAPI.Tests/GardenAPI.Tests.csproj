@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\GardenAPI\GardenAPI.csproj" />
-    <ProjectReference Include="..\..\src\PlantSchedulerAPI\GardenAPI.csproj" />
   </ItemGroup>
 
 
