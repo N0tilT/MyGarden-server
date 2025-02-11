@@ -1,4 +1,47 @@
+x-logging: &default-logging
+  driver: loki
+  options:
+    loki-url: 'http://localhost:3100/api/prom/push'
+    loki-pipeline-stages: |
+      - multiline:
+          firstline: '^\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2}'
+          max_wait_time: 3s
+      - regex:
+          expression: '^(?P<time>\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2},\d{3}) (?P<message>(?s:.*))$$'
+
 services:
+  loki:
+    image: grafana/loki:3.0.0
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+      - "3100:3100"
+
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./etc/prometheus:/workspace
+    command:
+      - --config.file=/workspace/prometheus.yml
+      - --enable-feature=exemplar-storage
+    depends_on:
+      - loki
+    logging: *default-logging
+    
+  grafana:
+    image: grafana/grafana:10.4.2
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./etc/grafana/:/etc/grafana/provisioning/datasources
+      - ./etc/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
+      - ./etc/dashboards:/etc/grafana/dashboards
+    depends_on:
+      - loki
+      - prometheus
+    logging: *default-logging
+
   postgres:
     container_name: postgres_container
     image: postgres:14.8-alpine3.18
@@ -87,10 +130,12 @@ services:
       - POSTGRES_DB=plantsdb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123Secret_a
+      - APP_NAME = "garden"
     depends_on:
         postgres:
             condition: service_healthy
             restart: true
+        loki:
     ports:
       - "8088:8080"
     networks:
@@ -101,6 +146,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
+    logging: *default-logging
 
   authapi:
     container_name: auth-api
@@ -113,10 +159,12 @@ services:
       - POSTGRES_DB=plantsdb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123Secret_a
+      - APP_NAME=auth
     depends_on:
       postgres:
         condition: service_healthy
         restart: true
+      loki:
     networks:
       - backend
     healthcheck:
@@ -125,6 +173,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
+    logging: *default-logging
 
   recognizeapi:
     container_name: recognize-api
@@ -136,8 +185,10 @@ services:
       - POSTGRES_DB=plantsdb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123Secret_a
+      - APP_NAME=recognize
     depends_on:
-      postgres:
+      - loki
+      - postgres:
         condition: service_healthy
         restart: true
     ports:
@@ -150,6 +201,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
+    logging: *default-logging
 
   apigateway:
     container_name: api-gateway

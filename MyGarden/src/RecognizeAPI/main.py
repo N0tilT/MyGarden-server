@@ -4,7 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware # type: ignore
 import shutil
 from recognizer.identifier import identify
 from data.plant_service import get_plants_data
+from prometheus_fastapi_instrumentator import Instrumentator
+
 app = FastAPI()
+
+Instrumentator().instrument(app).expose(app)
 
 app.add_middleware(
     CORSMiddleware,

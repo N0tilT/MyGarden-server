@@ -22,6 +22,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 
+Log.Logger = new LoggerConfiguration()
+    .WriteTo
+    .GrafanaLoki("http://loki:3100")
+    .CreateLogger();
+
+application.UseMetricServer(url: "/metrics");
+application.UseHttpMetrics();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
