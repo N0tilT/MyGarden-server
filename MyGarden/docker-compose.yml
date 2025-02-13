@@ -13,13 +13,11 @@ services:
   loki:
     image: grafana/loki:3.0.0
     command: -config.file=/etc/loki/local-config.yaml
-    ports:
-      - "3100:3100"
+    networks:
+      - stats
 
   prometheus:
     image: prom/prometheus:v2.51.2
-    ports:
-      - "9090:9090"
     volumes:
       - ./etc/prometheus:/workspace
     command:
@@ -28,19 +26,29 @@ services:
     depends_on:
       - loki
     logging: *default-logging
+    networks:
+      - stats
     
   grafana:
     image: grafana/grafana:10.4.2
     ports:
       - "3000:3000"
     volumes:
-      - ./etc/grafana/:/etc/grafana/provisioning/datasources
-      - ./etc/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
+      - ./etc/grafana/data:/var/lib/grafana
+      - ./etc/grafana/provisioning:/etc/grafana/provisioning
       - ./etc/dashboards:/etc/grafana/dashboards
+    environment:
+      GF_SECURITY_ADMIN_USER: "admin"
+      GF_SECURITY_ADMIN_PASSWORD: "admin"
+      GF_PATHS_PROVISIONING: /etc/grafana/provisioning
     depends_on:
       - loki
       - prometheus
     logging: *default-logging
+    networks:
+      - postgres
+      - backend
+      - stats
 
   postgres:
     container_name: postgres_container
@@ -132,10 +140,10 @@ services:
       - POSTGRES_PASSWORD=123Secret_a
       - APP_NAME = "garden"
     depends_on:
-        postgres:
-            condition: service_healthy
-            restart: true
-        loki:
+      postgres:
+        condition: service_healthy
+      loki: 
+        condition: service_started
     ports:
       - "8088:8080"
     networks:
@@ -163,8 +171,9 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-        restart: true
-      loki:
+      
+      loki: 
+        condition: service_started
     networks:
       - backend
     healthcheck:
@@ -187,10 +196,10 @@ services:
       - POSTGRES_PASSWORD=123Secret_a
       - APP_NAME=recognize
     depends_on:
-      - loki
-      - postgres:
+      loki: 
+        condition: service_started
+      postgres:
         condition: service_healthy
-        restart: true
     ports:
       - "8888:80"
     networks:
@@ -231,10 +240,7 @@ networks:
     driver: bridge
   gate:
     driver: bridge
+  stats:
+    driver: bridge  
   backend:
     driver: bridge
-    
-
-
-
-

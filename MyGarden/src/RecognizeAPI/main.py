@@ -5,6 +5,14 @@ import shutil
 from recognizer.identifier import identify
 from data.plant_service import get_plants_data
 from prometheus_fastapi_instrumentator import Instrumentator
+import logging
+import json_log_formatter
+
+formatter = json_log_formatter.JSONFormatter()
+handler = logging.FileHandler('/var/log/fastapi.log')
+handler.setFormatter(formatter)
+logger = logging.getLogger('uvicorn')
+logger.addHandler(handler)
 
 app = FastAPI()
 

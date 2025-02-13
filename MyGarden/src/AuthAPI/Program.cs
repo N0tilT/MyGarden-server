@@ -3,6 +3,9 @@ using AuthAPI.Model;
 using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Prometheus;
+using Serilog;
+using Serilog.Sinks.Grafana.Loki;
 
 var builder = WebApplication.CreateBuilder(args);
 RegisterDataSources(builder.Services);
@@ -22,13 +25,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 
-Log.Logger = new LoggerConfiguration()
-    .WriteTo
-    .GrafanaLoki("http://loki:3100")
-    .CreateLogger();
 
-application.UseMetricServer(url: "/metrics");
-application.UseHttpMetrics();
+
 
 var app = builder.Build();
 
@@ -46,6 +44,14 @@ app.MapHealthChecks("/health");
 app.MapControllers();
 
 await InitializeDataSources(app);
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo
+    .GrafanaLoki("http://loki:3100")
+    .CreateLogger();
+
+app.UseMetricServer(url: "/metrics");
+app.UseHttpMetrics();
 
 app.Run();
 
