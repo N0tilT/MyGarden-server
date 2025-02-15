@@ -34,6 +34,11 @@ jobs:
         name: test-logs
         path: MyGarden/test_logs.txt
 
+    - name: Set up Docker
+      run: |
+        echo "Installing Loki Docker Driver plugin..."
+        docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
+    
     - name: Build and push docker containers
       run: |
         cd MyGarden
