@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GardenAPI.Tests", "tests\Ga
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GardenAPI", "src\GardenAPI\GardenAPI.csproj", "{8BF99184-995F-4563-B56C-7A701EB0A6CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssistantAPI", "src\AssistantAPI\AssistantAPI.csproj", "{A0F58DFE-0900-8652-4271-743DBD7C319C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{8BF99184-995F-4563-B56C-7A701EB0A6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BF99184-995F-4563-B56C-7A701EB0A6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BF99184-995F-4563-B56C-7A701EB0A6CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F58DFE-0900-8652-4271-743DBD7C319C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F58DFE-0900-8652-4271-743DBD7C319C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F58DFE-0900-8652-4271-743DBD7C319C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F58DFE-0900-8652-4271-743DBD7C319C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{BD1FB871-D3E2-4B54-A066-CB73E12C0B46} = {CF83E2C6-919D-4EA6-8E38-60B1BC532C0B}
 		{D6DC7377-D430-4584-BCA6-1C25726E10A6} = {AB32854C-6444-4ECA-B15C-F30530B4D2B1}
 		{8BF99184-995F-4563-B56C-7A701EB0A6CE} = {CF83E2C6-919D-4EA6-8E38-60B1BC532C0B}
+		{A0F58DFE-0900-8652-4271-743DBD7C319C} = {CF83E2C6-919D-4EA6-8E38-60B1BC532C0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4BAAD83F-FF75-45AB-83DB-9441A9BD7417}
