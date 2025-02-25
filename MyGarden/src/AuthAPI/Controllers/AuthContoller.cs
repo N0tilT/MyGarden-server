@@ -1,5 +1,6 @@
-﻿using AuthAPI.Model;
-using AuthAPI.Model.Security;
+﻿using IdentityLibrary;
+using IdentityLibrary.Security;
+using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

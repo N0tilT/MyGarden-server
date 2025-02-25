@@ -1,4 +1,4 @@
-﻿namespace AuthAPI.Model
+﻿namespace IdentityLibrary
 {
     public class Role
     {

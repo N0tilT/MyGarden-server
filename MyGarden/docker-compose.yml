@@ -138,7 +138,7 @@ services:
       - POSTGRES_DB=plantsdb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123Secret_a
-      - APP_NAME = "garden"
+      - APP_NAME = garden
     depends_on:
       postgres:
         condition: service_healthy
@@ -146,6 +146,33 @@ services:
         condition: service_started
     ports:
       - "8088:8080"
+    networks:
+      - backend
+    healthcheck:
+      test: curl --fail http://localhost:8080/health || exit 1
+      interval: 2s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    logging: *default-logging
+
+  assistantapi:
+    container_name: assistant-api
+    image: ${DOCKER_REGISTRY-}assistantapi
+    build:
+      context: .
+      dockerfile: src/AssistantAPI/Dockerfile
+    environment:
+      - DB_HOST=postgres
+      - POSTGRES_DB=plantsdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123Secret_a
+      - APP_NAME=assistant
+    depends_on:
+      loki: 
+        condition: service_started
+      postgres:
+        condition: service_healthy
     networks:
       - backend
     healthcheck:

@@ -1,4 +1,4 @@
-﻿using AuthAPI.Model;
+﻿using IdentityLibrary;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

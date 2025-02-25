@@ -1,4 +1,4 @@
-﻿namespace AuthAPI.Model.Security
+﻿namespace IdentityLibrary.Security
 {
     public class SecurityRequest
     {

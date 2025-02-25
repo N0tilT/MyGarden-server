@@ -1,5 +1,5 @@
 using AuthAPI.Data;
-using AuthAPI.Model;
+using IdentityLibrary;
 using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

@@ -22,6 +22,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/AuthAPI/AuthAPI.csproj", "src/AuthAPI/"]
 COPY ["src/JwtAuthenticationManager/JwtAuthenticationManager.csproj", "src/JwtAuthenticationManager/"]
+COPY ["src/IdentityLibrary/IdentityLibrary.csproj", "src/IdentityLibrary/"]
 RUN dotnet restore "./src/AuthAPI/AuthAPI.csproj"
 COPY . .
 WORKDIR "/src/src/AuthAPI"

@@ -30,6 +30,8 @@ namespace GardenAPI.Entities.Plants
         public const int DescriptionLengthMax = 10240;
 
         public const bool IsUserIdRequired = true;
+        public const bool IsPlantTypeIdRequired = true;
+        public const bool IsPlantVarietyIdRequired = true;
         public const bool IsTitleRequired = true;
         public const bool IsBiologyTitleRequired = true;
         public const bool IsGroupIdRequired = true;
@@ -57,6 +59,16 @@ namespace GardenAPI.Entities.Plants
             {
                 builder.Property(plant => plant.UserId)
                     .IsRequired(IsUserIdRequired);
+
+                builder.HasOne(plant => plant.PlantType)
+                    .WithMany(plantType => plantType.Plants)
+                    .HasForeignKey(plant => plant.PlantTypeId)
+                    .IsRequired(IsPlantTypeIdRequired);
+                
+                builder.HasOne(plant => plant.PlantVariety)
+                    .WithMany(plantVariety => plantVariety.Plants)
+                    .HasForeignKey(plant => plant.PlantVarietyId)
+                    .IsRequired(IsPlantVarietyIdRequired);
 
                 builder.HasOne(plant => plant.WateringNeed)
                     .WithMany(wateringNeed => wateringNeed.Plants)
@@ -117,10 +129,14 @@ namespace GardenAPI.Entities.Plants
 
         public required string UserId { get; set; }
         public required int GroupId { get; set; }
+        public int? PlantTypeId { get; set; }
+        public int? PlantVarietyId { get; set; }
         public int? WateringNeedId { get; set; }
         public int? LightNeedId { get; set; }
         public int? StageId { get; set; }
 
+        public PlantType? PlantType { get; set; }
+        public PlantVariety? PlantVariety { get; set; }
         public Group? Group { get; set; }
         public WateringNeed? WateringNeed { get; set; }
         public LightNeed? LightNeed { get; set; }
