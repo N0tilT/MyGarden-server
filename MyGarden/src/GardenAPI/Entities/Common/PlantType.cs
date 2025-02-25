@@ -1,5 +1,4 @@
 ﻿using GardenAPI.Data;
-using GardenAPI.Entities.Gardens;
 using GardenAPI.Entities.Plants;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

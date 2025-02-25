@@ -46,7 +46,7 @@ namespace GardenAPI.Entities.Plants
 
 
         public required string UserId { get; set; }
-        public User? User{ get; set; }
+        public User? User { get; set; }
         public List<Plant> Plants { get; set; } = [];
     }
 }

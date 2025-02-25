@@ -64,7 +64,7 @@ namespace GardenAPI.Entities.Plants
                     .WithMany(plantType => plantType.Plants)
                     .HasForeignKey(plant => plant.PlantTypeId)
                     .IsRequired(IsPlantTypeIdRequired);
-                
+
                 builder.HasOne(plant => plant.PlantVariety)
                     .WithMany(plantVariety => plantVariety.Plants)
                     .HasForeignKey(plant => plant.PlantVarietyId)
