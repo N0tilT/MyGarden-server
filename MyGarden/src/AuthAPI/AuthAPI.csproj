@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IdentityLibrary\IdentityLibrary.csproj" />
+    <ProjectReference Include="..\IdentityLibrary\EntitesLibrary.csproj" />
     <ProjectReference Include="..\JwtAuthenticationManager\JwtAuthenticationManager.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EntitiesLibrary.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace AssistantAPI.Data
 {

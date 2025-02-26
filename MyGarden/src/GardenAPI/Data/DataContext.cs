@@ -1,7 +1,8 @@
-﻿using GardenAPI.Entities.Common;
-using GardenAPI.Entities.Events;
-using GardenAPI.Entities.Gardens;
-using GardenAPI.Entities.Plants;
+﻿using EntitiesLibrary.Common;
+using EntitiesLibrary.Data;
+using EntitiesLibrary.Events;
+using EntitiesLibrary.Gardens;
+using EntitiesLibrary.Plants;
 using Microsoft.EntityFrameworkCore;
 
 namespace GardenAPI.Data

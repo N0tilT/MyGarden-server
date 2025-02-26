@@ -20,10 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Transfer\" />
-    <Folder Include="Service\" />
+    <ProjectReference Include="..\IdentityLibrary\EntitesLibrary.csproj" />
   </ItemGroup>
 
 </Project>

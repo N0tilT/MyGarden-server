@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GardenAPI", "src\GardenAPI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssistantAPI", "src\AssistantAPI\AssistantAPI.csproj", "{A0F58DFE-0900-8652-4271-743DBD7C319C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityLibrary", "src\IdentityLibrary\IdentityLibrary.csproj", "{839C376A-7470-4F21-A953-781E4EDD8A16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitesLibrary", "src\IdentityLibrary\EntitesLibrary.csproj", "{839C376A-7470-4F21-A953-781E4EDD8A16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

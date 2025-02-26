@@ -1,7 +1,6 @@
-﻿using GardenAPI.Service.Gardens;
-using GardenAPI.Transfer.Common;
-using GardenAPI.Transfer.Garden;
-using GardenAPI.Transfer.Group;
+﻿using EntitiesLibrary.Transfer.Garden;
+using GardenAPI.Data;
+using GardenAPI.Service.Gardens;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GardenAPI.Controllers
@@ -25,7 +24,7 @@ namespace GardenAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GardenDTO>>> Get([FromQuery] string userId, [FromBody] List<int> ids)
         {
-            var groups = (await DataEntityService.Get(DataEntityService.DataContext.Gardens, userId, ids)).Select(x => x.ToDTO()).ToList();
+            var groups = (await DataEntityService.Get(((DataContext)DataEntityService.DataContext).Gardens, userId, ids)).Select(x => x.ToDTO()).ToList();
             return Ok(groups);
         }
 
@@ -37,7 +36,7 @@ namespace GardenAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<RequestGardenDTO> entities)
         {
-            var status = await DataEntityService.Set(DataEntityService.DataContext.Gardens, entities.Select(x => x.ToEntity()).ToList());
+            var status = await DataEntityService.Set(((DataContext)DataEntityService.DataContext).Gardens, entities.Select(x => x.ToEntity()).ToList());
 
             if (!status)
             {
@@ -55,7 +54,7 @@ namespace GardenAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete([FromBody] List<int> ids)
         {
-            var status = await DataEntityService.Remove(DataEntityService.DataContext.Gardens, ids);
+            var status = await DataEntityService.Remove(((DataContext)DataEntityService.DataContext).Gardens, ids);
 
             if (!status)
             {
