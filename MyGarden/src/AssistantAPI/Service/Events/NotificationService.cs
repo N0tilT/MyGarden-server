@@ -1,5 +1,6 @@
-﻿using GardenAPI.Data;
-using GardenAPI.Entities.Events;
+﻿using AssistantAPI.Data;
+using EntitiesLibrary.Events;
+using EntitiesLibrary.Services;
 
 namespace GardenAPI.Service.Common
 {
