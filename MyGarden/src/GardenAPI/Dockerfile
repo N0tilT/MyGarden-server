@@ -21,7 +21,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/GardenAPI/GardenAPI.csproj", "src/GardenAPI/"]
-COPY ["src/IdentityLibrary/IdentityLibrary.csproj", "src/IdentityLibrary/"]
+COPY ["src/EntityLibrary/EntityLibrary.csproj", "src/EntityLibrary/"]
 RUN dotnet restore "./src/GardenAPI/GardenAPI.csproj"
 COPY . .
 WORKDIR "/src/src/GardenAPI"

@@ -1,5 +1,5 @@
-﻿using IdentityLibrary;
-using IdentityLibrary.Security;
+﻿using EntitiesLibrary;
+using EntitiesLibrary.Security;
 using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

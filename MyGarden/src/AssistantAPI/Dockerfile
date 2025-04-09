@@ -20,11 +20,12 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/AssistantAPI/AssistantAPI.csproj", "src/AssistantAPI/"]
-COPY ["src/IdentityLibrary/IdentityLibrary.csproj", "src/IdentityLibrary/"]
+COPY ["src/EntityLibrary/EntityLibrary.csproj", "src/EntityLibrary/"]
 RUN dotnet restore "./src/AssistantAPI/AssistantAPI.csproj"
 COPY . .
 WORKDIR "/src/src/AssistantAPI"
 RUN dotnet build "./AssistantAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
 
 # Этот этап используется для публикации проекта службы, который будет скопирован на последний этап
 FROM build AS publish

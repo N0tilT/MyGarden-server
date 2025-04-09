@@ -1,4 +1,5 @@
 ﻿using EntitiesLibrary.Data;
+using EntitiesLibrary.Events;
 using Microsoft.EntityFrameworkCore;
 
 namespace AssistantAPI.Data
@@ -50,7 +51,7 @@ namespace AssistantAPI.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        //public DbSet<Group> Groups => Set<Group>();
+        public DbSet<Event> Events => Set<Event>();
     }
 }
 

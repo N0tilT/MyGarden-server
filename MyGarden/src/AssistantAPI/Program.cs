@@ -1,5 +1,5 @@
 ﻿using AssistantAPI.Data;
-using AssistantAPI.Middleware;
+using EntitiesLibrary.Middleware;
 using Prometheus;
 using Serilog;
 using Serilog.Sinks.Grafana.Loki;
