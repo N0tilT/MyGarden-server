@@ -1,4 +1,5 @@
 ﻿using AssistantAPI.Data;
+using EntitiesLibrary.Data;
 using EntitiesLibrary.Middleware;
 using Prometheus;
 using Serilog;

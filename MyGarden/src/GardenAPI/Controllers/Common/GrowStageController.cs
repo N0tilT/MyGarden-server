@@ -1,6 +1,7 @@
-﻿using GardenAPI.Entities.Common;
+﻿using EntitiesLibrary.Common;
+using EntitiesLibrary.Transfer.Common;
+using GardenAPI.Data;
 using GardenAPI.Service.Common;
-using GardenAPI.Transfer.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GardenAPI.Controllers.Common
@@ -24,7 +25,7 @@ namespace GardenAPI.Controllers.Common
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GrowStageDTO>>> Get([FromQuery] List<int> ids)
         {
-            var groups = (await DataEntityService.Get(DataEntityService.DataContext.GrowStages, ids)).Select(x => x.ToDTO<GrowStageDTO>()).ToList();
+            var groups = (await DataEntityService.Get(((DataContext)DataEntityService.DataContext).GrowStages, ids)).Select(x => x.ToDTO<GrowStageDTO>()).ToList();
             return Ok(groups);
         }
 
@@ -36,7 +37,7 @@ namespace GardenAPI.Controllers.Common
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<RequestCommonDTO> entities)
         {
-            var status = await DataEntityService.Set(DataEntityService.DataContext.GrowStages, entities.Select(x => x.ToEntity<GrowStage>()).ToList());
+            var status = await DataEntityService.Set(((DataContext)DataEntityService.DataContext).GrowStages, entities.Select(x => x.ToEntity<GrowStage>()).ToList());
 
             if (!status)
             {
@@ -54,7 +55,7 @@ namespace GardenAPI.Controllers.Common
         [HttpDelete]
         public async Task<IActionResult> Delete([FromBody] List<int> ids)
         {
-            var status = await DataEntityService.Remove(DataEntityService.DataContext.GrowStages, ids);
+            var status = await DataEntityService.Remove(((DataContext)DataEntityService.DataContext).GrowStages, ids);
 
             if (!status)
             {

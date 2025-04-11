@@ -1,7 +1,8 @@
+using EntitiesLibrary.Common;
+using EntitiesLibrary.Data;
+using EntitiesLibrary.Middleware;
+using EntitiesLibrary.Plants;
 using GardenAPI.Data;
-using GardenAPI.Entities.Common;
-using GardenAPI.Entities.Plants;
-using GardenAPI.Middleware;
 using GardenAPI.Service.Common;
 using GardenAPI.Service.Plants;
 using Prometheus;
@@ -46,7 +47,6 @@ void RegisterCoreServices(IServiceCollection services)
     services.AddScoped<GrowStageServive>();
     services.AddScoped<LightNeedService>();
     services.AddScoped<WateringNeedService>();
-    services.AddScoped<EventService>();
     services.AddScoped<GroupService>();
     services.AddScoped<PlantService>();
     services.AddControllers();

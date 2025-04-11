@@ -1,4 +1,5 @@
-﻿using EntitiesLibrary.Transfer.Event;
+﻿using AssistantAPI.Data;
+using EntitiesLibrary.Transfer.Event;
 using GardenAPI.Service.Common;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +24,7 @@ namespace AssistantAPI.Controller
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EventDTO>>> Get([FromQuery] string userId, [FromBody] List<int> ids)
         {
-            var events = (await DataEntityService.Get(DataEntityService.DataContext.Events, userId, ids)).Select(x => x.ToDTO()).ToList();
+            var events = (await DataEntityService.Get(((DataContext)DataEntityService.DataContext).Events, userId, ids)).Select(x => x.ToDTO()).ToList();
             return Ok(events);
         }
 
@@ -35,7 +36,7 @@ namespace AssistantAPI.Controller
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<RequestEventDTO> entities)
         {
-            var status = await DataEntityService.Set(DataEntityService.DataContext.Events, entities.Select(x => x.ToEntity()).ToList());
+            var status = await DataEntityService.Set(((DataContext)DataEntityService.DataContext).Events, entities.Select(x => x.ToEntity()).ToList());
 
             if (!status)
             {
@@ -53,7 +54,7 @@ namespace AssistantAPI.Controller
         [HttpDelete]
         public async Task<IActionResult> Delete([FromBody] List<int> ids)
         {
-            var status = await DataEntityService.Remove(DataEntityService.DataContext.Events, ids);
+            var status = await DataEntityService.Remove(((DataContext)DataEntityService.DataContext).Events, ids);
 
             if (!status)
             {

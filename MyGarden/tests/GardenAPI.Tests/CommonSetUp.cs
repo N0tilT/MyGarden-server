@@ -1,6 +1,7 @@
-﻿using GardenAPI.Data;
-using GardenAPI.Entities.Common;
-using GardenAPI.Entities.Plants;
+﻿using EntitiesLibrary.Common;
+using EntitiesLibrary.Data;
+using EntitiesLibrary.Plants;
+using GardenAPI.Data;
 using GardenAPI.Service.Common;
 using GardenAPI.Service.Gardens;
 using GardenAPI.Service.Plants;
@@ -19,7 +20,6 @@ namespace GardenAPI.Tests
         internal required GardenService _gardenService;
         internal required GardenTypeService _gardenTypeService;
         internal required PlantService _plantService;
-        internal required EventService _eventService;
 
         [OneTimeSetUp]
         public void Setup()
@@ -33,7 +33,6 @@ namespace GardenAPI.Tests
             _gardenService = new GardenService(_dataContext);
             _gardenTypeService = new GardenTypeService(_dataContext);
             _plantService = new PlantService(_dataContext);
-            _eventService = new EventService(_dataContext);
 
             Task.WhenAll(
                 _growStageService.Set(_dataContext.GrowStages,

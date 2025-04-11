@@ -1,8 +1,8 @@
 
+using EntitiesLibrary.Gardens;
+using EntitiesLibrary.Transfer.Garden;
 using GardenAPI.Controllers;
-using GardenAPI.Entities.Gardens;
 using GardenAPI.Tests;
-using GardenAPI.Transfer.Garden;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
