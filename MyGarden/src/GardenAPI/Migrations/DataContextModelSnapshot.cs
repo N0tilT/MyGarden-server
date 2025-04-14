@@ -17,12 +17,12 @@ namespace GardenAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("ProductVersion", "9.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("GardenAPI.Entities.Common.GardenType", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.GardenType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace GardenAPI.Migrations
                     b.ToTable("GardenTypes");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Common.GrowStage", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.GrowStage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,7 +69,7 @@ namespace GardenAPI.Migrations
                     b.ToTable("GrowStages");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Common.LightNeed", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.LightNeed", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,7 +94,62 @@ namespace GardenAPI.Migrations
                     b.ToTable("LightNeeds");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Common.WateringNeed", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.PlantType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("current_timestamp");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PlantTypes");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("current_timestamp");
+
+                    b.Property<int?>("PlantTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlantTypeId");
+
+                    b.ToTable("PlantVarieties");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Common.WateringNeed", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -119,7 +174,7 @@ namespace GardenAPI.Migrations
                     b.ToTable("WateringNeeds");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Events.Event", b =>
+            modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -158,7 +213,7 @@ namespace GardenAPI.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Events.Notification", b =>
+            modelBuilder.Entity("EntitiesLibrary.Events.Notification", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -184,7 +239,7 @@ namespace GardenAPI.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Gardens.Garden", b =>
+            modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -220,7 +275,7 @@ namespace GardenAPI.Migrations
                     b.ToTable("Gardens");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Plants.Group", b =>
+            modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -251,7 +306,7 @@ namespace GardenAPI.Migrations
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Plants.Plant", b =>
+            modelBuilder.Entity("EntitiesLibrary.Plants.Plant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -284,6 +339,12 @@ namespace GardenAPI.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("LightNeedId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PlantTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PlantVarietyId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Replacing")
@@ -321,6 +382,10 @@ namespace GardenAPI.Migrations
 
                     b.HasIndex("LightNeedId");
 
+                    b.HasIndex("PlantTypeId");
+
+                    b.HasIndex("PlantVarietyId");
+
                     b.HasIndex("StageId");
 
                     b.HasIndex("UserId");
@@ -330,9 +395,68 @@ namespace GardenAPI.Migrations
                     b.ToTable("Plants");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Events.Event", b =>
+            modelBuilder.Entity("EntitiesLibrary.User", b =>
                 {
-                    b.HasOne("GardenAPI.Entities.Plants.Plant", "Plant")
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>
+                {
+                    b.HasOne("EntitiesLibrary.Common.PlantType", null)
+                        .WithMany("PlantVarieties")
+                        .HasForeignKey("PlantTypeId");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
+                {
+                    b.HasOne("EntitiesLibrary.Plants.Plant", "Plant")
                         .WithMany("Events")
                         .HasForeignKey("PlantId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -341,9 +465,9 @@ namespace GardenAPI.Migrations
                     b.Navigation("Plant");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Events.Notification", b =>
+            modelBuilder.Entity("EntitiesLibrary.Events.Notification", b =>
                 {
-                    b.HasOne("GardenAPI.Entities.Events.Event", "Event")
+                    b.HasOne("EntitiesLibrary.Events.Event", "Event")
                         .WithMany("Notifications")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -352,34 +476,57 @@ namespace GardenAPI.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Gardens.Garden", b =>
+            modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
                 {
-                    b.HasOne("GardenAPI.Entities.Common.GardenType", null)
+                    b.HasOne("EntitiesLibrary.Common.GardenType", null)
                         .WithMany("Gardens")
                         .HasForeignKey("GardenTypeId");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Plants.Plant", b =>
+            modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
                 {
-                    b.HasOne("GardenAPI.Entities.Plants.Group", "Group")
+                    b.HasOne("EntitiesLibrary.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Plants.Plant", b =>
+                {
+                    b.HasOne("EntitiesLibrary.Plants.Group", "Group")
                         .WithMany("Plants")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GardenAPI.Entities.Common.LightNeed", "LightNeed")
+                    b.HasOne("EntitiesLibrary.Common.LightNeed", "LightNeed")
                         .WithMany("Plants")
                         .HasForeignKey("LightNeedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GardenAPI.Entities.Common.GrowStage", "Stage")
+                    b.HasOne("EntitiesLibrary.Common.PlantType", "PlantType")
+                        .WithMany("Plants")
+                        .HasForeignKey("PlantTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntitiesLibrary.Common.PlantVariety", "PlantVariety")
+                        .WithMany("Plants")
+                        .HasForeignKey("PlantVarietyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntitiesLibrary.Common.GrowStage", "Stage")
                         .WithMany("Plants")
                         .HasForeignKey("StageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GardenAPI.Entities.Common.WateringNeed", "WateringNeed")
+                    b.HasOne("EntitiesLibrary.Common.WateringNeed", "WateringNeed")
                         .WithMany("Plants")
                         .HasForeignKey("WateringNeedId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -389,42 +536,58 @@ namespace GardenAPI.Migrations
 
                     b.Navigation("LightNeed");
 
+                    b.Navigation("PlantType");
+
+                    b.Navigation("PlantVariety");
+
                     b.Navigation("Stage");
 
                     b.Navigation("WateringNeed");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Common.GardenType", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.GardenType", b =>
                 {
                     b.Navigation("Gardens");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Common.GrowStage", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.GrowStage", b =>
                 {
                     b.Navigation("Plants");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Common.LightNeed", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.LightNeed", b =>
                 {
                     b.Navigation("Plants");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Common.WateringNeed", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.PlantType", b =>
+                {
+                    b.Navigation("PlantVarieties");
+
+                    b.Navigation("Plants");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>
                 {
                     b.Navigation("Plants");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Events.Event", b =>
+            modelBuilder.Entity("EntitiesLibrary.Common.WateringNeed", b =>
+                {
+                    b.Navigation("Plants");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
                 {
                     b.Navigation("Notifications");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Plants.Group", b =>
+            modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
                 {
                     b.Navigation("Plants");
                 });
 
-            modelBuilder.Entity("GardenAPI.Entities.Plants.Plant", b =>
+            modelBuilder.Entity("EntitiesLibrary.Plants.Plant", b =>
                 {
                     b.Navigation("Events");
                 });

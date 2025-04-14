@@ -12,7 +12,6 @@ builder.Services.AddOcelot(builder.Configuration);
 builder.Services.AddCustomJwtAuthentication(builder.Configuration);
 
 var app = builder.Build();
-app.MapHealthChecks("/healthz");
 
 app.UseAuthentication();
 app.UseAuthorization();

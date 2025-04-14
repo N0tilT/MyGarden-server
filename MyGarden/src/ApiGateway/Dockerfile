@@ -9,8 +9,6 @@ ENV NUGET_CERT_REVOCATION_MODE=offline
 USER root
 WORKDIR /app
 
-RUN ["apk","update"] 
-RUN ["apk","add","curl"]
 USER app
 EXPOSE 8080
 EXPOSE 8081

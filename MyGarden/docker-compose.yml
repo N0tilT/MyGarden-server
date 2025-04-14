@@ -245,12 +245,6 @@ services:
     networks:
       - backend
       - gate
-    healthcheck:
-      test: curl --fail http://localhost:8080/healthz || exit 1
-      interval: 2s
-      timeout: 5s
-      retries: 3
-      start_period: 5s
       
 
 volumes:
