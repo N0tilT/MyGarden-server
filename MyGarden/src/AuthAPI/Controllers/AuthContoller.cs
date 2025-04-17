@@ -83,9 +83,9 @@ namespace AuthAPI.Controllers
 
         }
         [HttpGet("validate")]
-        public IActionResult Validate([FromQuery(Name = "email")] string email, [FromQuery(Name = "token")] string token)
+        public async Task<IActionResult> ValidateAsync([FromQuery(Name = "email")] string email, [FromQuery(Name = "token")] string token)
         {
-            var u = _userManager.FindByEmailAsync(email);
+            var u = await _userManager.FindByEmailAsync(email);
 
             if (u == null)
             {

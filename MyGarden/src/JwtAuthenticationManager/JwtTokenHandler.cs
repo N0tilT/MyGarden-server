@@ -48,15 +48,12 @@ namespace JwtAuthenticationManager
                 return string.Empty;
             }
 
-            ClaimsIdentity identity;
-            try
-            {
-                identity = (ClaimsIdentity)principal.Claims;
-            }
-            catch (NullReferenceException)
+            var identity = principal.Identity as ClaimsIdentity;
+            if (identity == null)
             {
                 return string.Empty;
             }
+
 
             var userIdClaim = identity.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
             return userIdClaim?.Value ?? string.Empty;

@@ -72,7 +72,7 @@
     },
     {
       "UpstreamPathTemplate": "/api/auth/validate",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [ "Get" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
