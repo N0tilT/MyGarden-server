@@ -9,6 +9,15 @@ using Prometheus;
 using Serilog;
 using Serilog.Sinks.Grafana.Loki;
 
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+    .Enrich.WithProperty("app", Environment.GetEnvironmentVariable("APP_NAME"))
+    .WriteTo.GrafanaLoki(
+        "http://loki:3100",
+        labels: new List<LokiLabel> { new LokiLabel { Key = "app", Value = Environment.GetEnvironmentVariable("APP_NAME") } }
+    )
+    .CreateLogger();
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
@@ -17,7 +26,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
-
 RegisterCoreServices(builder.Services);
 RegisterDataSources(builder.Services);
 
@@ -31,11 +39,6 @@ application.MapHealthChecks("/health");
 application.UseCors();
 
 await InitializeDataSources(application);
-
-Log.Logger = new LoggerConfiguration()
-    .WriteTo
-    .GrafanaLoki("http://loki:3100")
-    .CreateLogger();
 
 application.UseMetricServer(url: "/metrics");
 application.UseHttpMetrics();

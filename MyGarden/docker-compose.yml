@@ -1,22 +1,32 @@
-x-logging: &default-logging
-  driver: loki
+
+x-def-logging: &default-logging
+  driver: "loki"
   options:
-    loki-url: 'http://localhost:3100/api/prom/push'
-    loki-pipeline-stages: |
-      - multiline:
-          firstline: '^\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2}'
-          max_wait_time: 3s
-      - regex:
-          expression: '^(?P<time>\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2},\d{3}) (?P<message>(?s:.*))$$'
+    loki-url: "http://localhost:3100/loki/api/v1/push"
+    loki-batch-size: "100"
+    loki-retries: 2
+    loki-max-backoff: 1000ms
+    loki-timeout: 1s
 
 services:
+  
   loki:
-    image: grafana/loki:3.0.0
-    command: -config.file=/etc/loki/local-config.yaml
+    hostname: loki
+    image: grafana/loki:2.9.0
+    environment:
+      TZ: ${SYSTEM_TIMEZONE:-Europe/Moscow}
+    volumes:
+      - ./etc/loki/retention-config.yaml:/etc/loki/retention-config.yaml
     networks:
       - stats
+      - backend
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/retention-config.yaml
 
   prometheus:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     image: prom/prometheus:v2.51.2
     volumes:
       - ./etc/prometheus:/workspace
@@ -30,6 +40,8 @@ services:
       - stats
     
   grafana:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     image: grafana/grafana:10.4.2
     ports:
       - "3000:3000"
@@ -51,6 +63,8 @@ services:
       - stats
 
   postgres:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     container_name: postgres_container
     image: postgres:14.8-alpine3.18
     command:
@@ -107,6 +121,8 @@ services:
       - backend
 
   pgadmin:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     container_name: pgadmin_container
     image: dpage/pgadmin4:7.2
     environment:
@@ -128,6 +144,8 @@ services:
 
       
   gardenapi:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     container_name: garden-api
     image: ${DOCKER_REGISTRY-}gardenapi
     build:
@@ -138,7 +156,7 @@ services:
       - POSTGRES_DB=plantsdb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123Secret_a
-      - APP_NAME = garden
+      - APP_NAME=garden
     depends_on:
       postgres:
         condition: service_healthy
@@ -152,9 +170,14 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
+    labels:
+      - "app=garden"
+      - "service=backend"
     logging: *default-logging
 
   assistantapi:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     container_name: assistant-api
     image: ${DOCKER_REGISTRY-}assistantapi
     build:
@@ -179,9 +202,14 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
+    labels:
+      - "app=assistant" 
+      - "service=backend"
     logging: *default-logging
 
   authapi:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     container_name: auth-api
     image: ${DOCKER_REGISTRY-}authapi
     build:
@@ -206,9 +234,14 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
+    labels:
+      - "app=auth"
+      - "service=backend"
     logging: *default-logging
 
   recognizeapi:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     container_name: recognize-api
     build:
       context: .
@@ -232,11 +265,18 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
+    labels:
+      - "app=recognize"
+      - "service=backend"
     logging: *default-logging
 
   apigateway:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
     container_name: api-gateway
     image: ${DOCKER_REGISTRY-}apigateway
+    environment:
+      - APP_NAME=gateway
     build:
       context: .
       dockerfile: src/ApiGateway/Dockerfile
@@ -245,11 +285,16 @@ services:
     networks:
       - backend
       - gate
+    labels:
+      - "app=gateway"
+      - "service=backend"
+    logging: *default-logging
       
 
 volumes:
   plants-data:
   pgadmin-data:
+  loki-storage:
 
 networks:
   postgres:
