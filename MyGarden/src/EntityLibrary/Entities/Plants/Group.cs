@@ -37,6 +37,10 @@ namespace EntitiesLibrary.Plants
             {
                 builder.Property(group => group.UserId)
                     .IsRequired(IsUserIdRequired);
+                builder.HasOne(g => g.User)
+                    .WithMany()
+                    .HasForeignKey(g => g.UserId)
+                    .IsRequired();
                 base.Configure(builder);
             }
         }

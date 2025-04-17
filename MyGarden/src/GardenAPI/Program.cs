@@ -88,11 +88,4 @@ async Task InitializeDataSources(WebApplication application)
                 new WateringNeed{Id=2,Title="�������"},
                 new WateringNeed{Id=3,Title="�������"}
             });
-
-    await scope.ServiceProvider.GetRequiredService<GroupService>().Set(dataContext.Groups, new List<Group>
-    {
-        new Group{Id=0,UserId = "default",Title="default"},
-    });
-
-
 }
