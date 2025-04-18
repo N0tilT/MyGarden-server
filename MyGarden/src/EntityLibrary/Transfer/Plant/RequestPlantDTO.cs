@@ -13,6 +13,8 @@
         public required int LightNeedId { get; init; }
         public required int StageId { get; init; }
 
+        public int? PlantTypeId { get; init; }
+        public int? PlantVarietyId { get; init; }
         public int? ImageId { get; init; }
         public int? RipeningPeriod { get; init; }
         public string? Fertilization { get; init; }

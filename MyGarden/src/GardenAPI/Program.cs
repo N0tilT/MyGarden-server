@@ -87,7 +87,7 @@ async Task InitializeDataSources(WebApplication application)
     });
 
     await scope.ServiceProvider.GetRequiredService<WateringNeedService>().Set(dataContext.WateringNeeds, new List<WateringNeed> {
-                new WateringNeed{Id=1,Title="������"},
+                new WateringNeed{Id=1,Title="������"}, 
                 new WateringNeed{Id=2,Title="�������"},
                 new WateringNeed{Id=3,Title="�������"}
             });

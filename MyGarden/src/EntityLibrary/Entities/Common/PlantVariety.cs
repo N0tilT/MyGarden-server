@@ -33,11 +33,15 @@ namespace EntitiesLibrary.Common
             public override void Configure(EntityTypeBuilder<PlantVariety> builder)
             {
                 base.Configure(builder);
+                builder.HasOne(x=>x.PlantType)
+                    .WithMany(type=>type.PlantVarieties)
+                    .HasForeignKey(x=>x.PlantTypeId);
             }
         }
 
         #endregion
-
+        public int? PlantTypeId { get; set; }
+        public PlantType? PlantType { get; set; }
         public List<Plant> Plants { get; set; } = [];
     }
 }

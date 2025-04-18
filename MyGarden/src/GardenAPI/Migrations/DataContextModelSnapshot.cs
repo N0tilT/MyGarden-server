@@ -455,9 +455,11 @@ namespace GardenAPI.Migrations
 
             modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>
                 {
-                    b.HasOne("EntitiesLibrary.Common.PlantType", null)
+                    b.HasOne("EntitiesLibrary.Common.PlantType", "PlantType")
                         .WithMany("PlantVarieties")
                         .HasForeignKey("PlantTypeId");
+
+                    b.Navigation("PlantType");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
