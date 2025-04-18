@@ -2,8 +2,9 @@
 {
     public class SecurityResponse
     {
-        public required User User { get; init; }
+        public User? User { get; init; }
 
         public required string Token { get; init; }
+        public required string RefreshToken { get; init; }
     }
 }

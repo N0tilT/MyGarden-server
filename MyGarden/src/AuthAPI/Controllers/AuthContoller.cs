@@ -1,5 +1,6 @@
 ﻿using EntitiesLibrary;
 using EntitiesLibrary.Security;
+using EntityLibrary.Entities.Security;
 using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -33,13 +34,17 @@ namespace AuthAPI.Controllers
                 var user = _userManager.Users.SingleOrDefault(r => r.Email == request.Email);
                 if (user != null)
                 {
+                    var refreshToken = _jwtTokenHandler.HashRefreshToken(_jwtTokenHandler.GenerateRefreshToken());
+                    user.RefreshToken = refreshToken;
+                    user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
                     var userRoles = await _userManager.GetRolesAsync(user);
                     return Ok(
 
                         new SecurityResponse
                         {
                             User = user,
-                            Token = _jwtTokenHandler.GenerateJwtToken(user, userRoles.First())
+                            Token = _jwtTokenHandler.GenerateJwtToken(user, userRoles.First()),
+                            RefreshToken = refreshToken
                         });
                 }
             }
@@ -71,12 +76,18 @@ namespace AuthAPI.Controllers
                     });
                 }
                 await _userManager.AddToRoleAsync(user, request.RoleName);
+
+                var refreshToken = _jwtTokenHandler.HashRefreshToken(_jwtTokenHandler.GenerateRefreshToken());
+                user.RefreshToken = refreshToken;
+                user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
+
                 return Ok(
 
                         new SecurityResponse
                         {
                             User = user,
-                            Token = _jwtTokenHandler.GenerateJwtToken(user, request.RoleName)
+                            Token = _jwtTokenHandler.GenerateJwtToken(user, request.RoleName),
+                            RefreshToken = refreshToken
                         });
             }
             return BadRequest(result.Errors);
@@ -100,6 +111,44 @@ namespace AuthAPI.Controllers
             }
 
             return Ok(userId);
+        }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
+        {
+            var user = _userManager.Users.FirstOrDefault(u => u.RefreshToken == request.Token);
+
+            if (user == null)
+            {
+                return Unauthorized("Invalid refresh token");
+            }
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var accessToken = _jwtTokenHandler.GenerateJwtToken(user, userRoles.First());
+
+            var refreshToken = _jwtTokenHandler.HashRefreshToken(_jwtTokenHandler.GenerateRefreshToken());
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
+            await _userManager.UpdateAsync(user);
+
+            return Ok(new SecurityResponse
+            {
+                Token = accessToken,
+                RefreshToken = refreshToken
+            });
+        }
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout([FromBody] LogoutRequest request)
+        {
+            var user = await _userManager.FindByEmailAsync(request.Email);
+            if (user == null) return NotFound();
+
+            user.RefreshToken = null;
+            user.RefreshTokenExpiry = DateTime.MinValue;
+            await _userManager.UpdateAsync(user);
+
+            await _signInManager.SignOutAsync();
+            return Ok();
         }
     }
 

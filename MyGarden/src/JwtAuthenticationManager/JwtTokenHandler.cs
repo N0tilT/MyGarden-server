@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace JwtAuthenticationManager
@@ -10,6 +11,21 @@ namespace JwtAuthenticationManager
     public class JwtTokenHandler(JwtOptions options)
     {
         private readonly JwtOptions _options = options;
+
+        public string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[64];
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
+        }
+
+        public string HashRefreshToken(string refreshToken)
+        {
+            using var sha256 = SHA256.Create();
+            var hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(refreshToken));
+            return Convert.ToBase64String(hashBytes);
+        }
 
         public string GenerateJwtToken(IdentityUser user, string role)
         {
