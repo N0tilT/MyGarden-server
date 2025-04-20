@@ -52,6 +52,8 @@ void RegisterCoreServices(IServiceCollection services)
     services.AddScoped<WateringNeedService>();
     services.AddScoped<GroupService>();
     services.AddScoped<PlantService>();
+    services.AddScoped<PlantTypeService>();
+    services.AddScoped<PlantVarietyService>();
     services.AddControllers();
 }
 
