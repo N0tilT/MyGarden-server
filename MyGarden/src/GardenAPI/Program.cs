@@ -64,7 +64,7 @@ void RegisterDataSources(IServiceCollection services)
     var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER");
     var dbPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
     var connectionString = $"Server={dbHost};Port=5432;Database={dbName};User Id={dbUser};Password={dbPassword};";
-    services.AddScoped(provider => new DataContext(new ContextConfiguration(connectionString)));
+    services.AddScoped(provider => new DataContext(new ContextConfiguration(connectionString,"gardenAPI")));
 }
 
 async Task InitializeDataSources(WebApplication application)
@@ -92,5 +92,21 @@ async Task InitializeDataSources(WebApplication application)
                 new WateringNeed{Id=1,Title="������"}, 
                 new WateringNeed{Id=2,Title="�������"},
                 new WateringNeed{Id=3,Title="�������"}
+            });
+
+    await scope.ServiceProvider.GetRequiredService<GrowStageServive>().Set(dataContext.GrowStages, new List<GrowStage> {
+                new GrowStage{Id=1,Title="������"},
+                new GrowStage{Id=2,Title="�������"},
+                new GrowStage{Id=3,Title="�������"}
+            });
+    await scope.ServiceProvider.GetRequiredService<PlantTypeService>().Set(dataContext.PlantTypes, new List<PlantType> {
+                new PlantType{Id=1,Title="������"},
+                new PlantType{Id=2,Title="�������"},
+                new PlantType{Id=3,Title="�������"}
+            });
+    await scope.ServiceProvider.GetRequiredService<PlantVarietyService>().Set(dataContext.PlantVarieties, new List<PlantVariety> {
+                new PlantVariety{Id=1,Title="������"},
+                new PlantVariety{Id=2,Title="�������"},
+                new PlantVariety{Id=3,Title="�������"}
             });
 }

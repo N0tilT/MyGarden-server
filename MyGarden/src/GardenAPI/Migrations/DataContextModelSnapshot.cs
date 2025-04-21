@@ -174,71 +174,6 @@ namespace GardenAPI.Migrations
                     b.ToTable("WateringNeeds");
                 });
 
-            modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("current_timestamp");
-
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("PlantId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Title")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlantId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("EntitiesLibrary.Events.Notification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("current_timestamp");
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventId");
-
-                    b.ToTable("Notifications");
-                });
-
             modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
                 {
                     b.Property<int>("Id")
@@ -450,7 +385,7 @@ namespace GardenAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>
@@ -460,28 +395,6 @@ namespace GardenAPI.Migrations
                         .HasForeignKey("PlantTypeId");
 
                     b.Navigation("PlantType");
-                });
-
-            modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
-                {
-                    b.HasOne("EntitiesLibrary.Plants.Plant", "Plant")
-                        .WithMany("Events")
-                        .HasForeignKey("PlantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Plant");
-                });
-
-            modelBuilder.Entity("EntitiesLibrary.Events.Notification", b =>
-                {
-                    b.HasOne("EntitiesLibrary.Events.Event", "Event")
-                        .WithMany("Notifications")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
@@ -585,19 +498,9 @@ namespace GardenAPI.Migrations
                     b.Navigation("Plants");
                 });
 
-            modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
-                {
-                    b.Navigation("Notifications");
-                });
-
             modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
                 {
                     b.Navigation("Plants");
-                });
-
-            modelBuilder.Entity("EntitiesLibrary.Plants.Plant", b =>
-                {
-                    b.Navigation("Events");
                 });
 #pragma warning restore 612, 618
         }

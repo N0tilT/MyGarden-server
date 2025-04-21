@@ -40,16 +40,16 @@ namespace EntitiesLibrary.Events
             {
                 builder.Property(ev => ev.UserId)
                     .IsRequired(IsUserIdRequired);
-                builder.HasOne(nutrition => nutrition.Plant)
-                    .WithMany(plant => plant.Events)
-                    .HasForeignKey(nutrition => nutrition.PlantId)
+                builder.HasOne(ev => ev.Plant)
+                    .WithMany()
+                    .HasForeignKey(plant => plant.PlantId)
                     .IsRequired(IsPlantIdRequired);
 
-                builder.Property(nutrition => nutrition.Title)
+                builder.Property(ev => ev.Title)
                    .HasMaxLength(TitleLengthMax)
                    .IsRequired(IsTitleRequired);
 
-                builder.Property(nutrition => nutrition.Date)
+                builder.Property(ev => ev.Date)
                    .IsRequired(IsDateRequired);
 
                 base.Configure(builder);

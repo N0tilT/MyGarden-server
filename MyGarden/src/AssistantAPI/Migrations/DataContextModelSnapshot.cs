@@ -359,20 +359,22 @@ namespace AssistantAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>
                 {
-                    b.HasOne("EntitiesLibrary.Common.PlantType", null)
+                    b.HasOne("EntitiesLibrary.Common.PlantType", "PlantType")
                         .WithMany("PlantVarieties")
                         .HasForeignKey("PlantTypeId");
+
+                    b.Navigation("PlantType");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
                 {
                     b.HasOne("EntitiesLibrary.Plants.Plant", "Plant")
-                        .WithMany("Events")
+                        .WithMany()
                         .HasForeignKey("PlantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -478,11 +480,6 @@ namespace AssistantAPI.Migrations
             modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
                 {
                     b.Navigation("Plants");
-                });
-
-            modelBuilder.Entity("EntitiesLibrary.Plants.Plant", b =>
-                {
-                    b.Navigation("Events");
                 });
 #pragma warning restore 612, 618
         }

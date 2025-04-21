@@ -51,7 +51,7 @@ void RegisterDataSources(IServiceCollection services)
     var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER");
     var dbPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
     var connectionString = $"Server={dbHost};Port=5432;Database={dbName};User Id={dbUser};Password={dbPassword};";
-    services.AddScoped(provider => new DataContext(new ContextConfiguration(connectionString)));
+    services.AddScoped(provider => new DataContext(new ContextConfiguration(connectionString,"assistantAPI")));
 }
 
 async Task InitializeDataSources(WebApplication application)

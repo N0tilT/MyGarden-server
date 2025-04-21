@@ -18,8 +18,9 @@ public class DataContext : IdentityDbContext<User>
             await Database.MigrateAsync();
             return await Database.CanConnectAsync();
         }
-        catch
+        catch (Exception ex)
         {
+            Console.WriteLine($"Migration failed: {ex}");
             return false;
         }
     }

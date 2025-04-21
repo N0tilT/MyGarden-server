@@ -62,7 +62,7 @@ void RegisterDataSources(IServiceCollection services)
     var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER");
     var dbPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
     var connectionString = $"Server={dbHost};Port=5432;Database={dbName};User Id={dbUser};Password={dbPassword};";
-    builder.Services.AddDbContext<DataContext>(o => o.UseNpgsql(connectionString));
+    builder.Services.AddDbContext<DataContext>(o => o.UseNpgsql(connectionString,x=>x.MigrationsHistoryTable("__AuthMigrationsHistory")));
 }
 
 async Task InitializeDataSources(WebApplication application)

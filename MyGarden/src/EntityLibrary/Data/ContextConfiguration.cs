@@ -10,9 +10,10 @@ namespace EntitiesLibrary.Data
     /// </summary>
     /// <param name="connectionString">Строка подключения к базе данных.</param>
     /// <param name="isDebugMode">Статус конфигурации для разработки.</param>
-    public class ContextConfiguration(string connectionString) : BaseConfiguration
+    public class ContextConfiguration(string connectionString,string serviceName) : BaseConfiguration
     {
         public string ConnectionString { get; } = connectionString;
+        public string ServiceName { get; } = serviceName;
         private bool IsDebugMode { get; } = false;
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace EntitiesLibrary.Data
         /// <param name="optionsBuilder">Набор интерфейсов настройки сессии.</param>
         public override void ConfigureContext(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(ConnectionString);
+            optionsBuilder.UseNpgsql(ConnectionString, x => x.MigrationsHistoryTable($"__{ServiceName}MigrationsHistory"));
 
             optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.ConfigureWarnings(builder => builder.Throw(RelationalEventId.MultipleCollectionIncludeWarning));

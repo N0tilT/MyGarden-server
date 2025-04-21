@@ -152,7 +152,6 @@ namespace EntitiesLibrary.Plants
         public string? Replacing { get; set; }
         public string? Description { get; set; }
 
-        public List<Event> Events { get; set; } = [];
 
 
     }
