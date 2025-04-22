@@ -1,9 +1,11 @@
 ﻿using EntitiesLibrary.Data;
 using EntitiesLibrary.Plants;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntitiesLibrary.Common
 {
+    [Table(nameof(LightNeed))]
     public class LightNeed : CommonEntity
     {
         //None,

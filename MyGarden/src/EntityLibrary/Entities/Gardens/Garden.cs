@@ -1,12 +1,15 @@
-﻿using EntitiesLibrary.Data;
+﻿using EntitiesLibrary.Common;
+using EntitiesLibrary.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
 
 namespace EntitiesLibrary.Gardens
 {
     [Index(nameof(UserId))]
+    [Table(nameof(Garden))]
     public class Garden : IdentifiableEntity, IHasUserId
     {
         /*                   __ _                       _   _

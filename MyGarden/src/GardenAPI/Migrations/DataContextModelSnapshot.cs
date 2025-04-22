@@ -41,7 +41,7 @@ namespace GardenAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GardenTypes");
+                    b.ToTable("GardenType");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.GrowStage", b =>
@@ -66,7 +66,7 @@ namespace GardenAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GrowStages");
+                    b.ToTable("GrowStage");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.LightNeed", b =>
@@ -91,7 +91,7 @@ namespace GardenAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LightNeeds");
+                    b.ToTable("LightNeed");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.PlantType", b =>
@@ -116,7 +116,7 @@ namespace GardenAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PlantTypes");
+                    b.ToTable("PlantType");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>
@@ -146,7 +146,7 @@ namespace GardenAPI.Migrations
 
                     b.HasIndex("PlantTypeId");
 
-                    b.ToTable("PlantVarieties");
+                    b.ToTable("PlantVariety");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.WateringNeed", b =>
@@ -171,7 +171,7 @@ namespace GardenAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WateringNeeds");
+                    b.ToTable("WateringNeed");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
@@ -207,7 +207,7 @@ namespace GardenAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Gardens");
+                    b.ToTable("Garden");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
@@ -238,7 +238,7 @@ namespace GardenAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Groups");
+                    b.ToTable("Group");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Plants.Plant", b =>
@@ -327,7 +327,7 @@ namespace GardenAPI.Migrations
 
                     b.HasIndex("WateringNeedId");
 
-                    b.ToTable("Plants");
+                    b.ToTable("Plant");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.User", b =>

@@ -12,8 +12,9 @@ namespace GardenAPI.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+
             migrationBuilder.CreateTable(
-                name: "GardenTypes",
+                name: "GardenType",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -24,11 +25,11 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GardenTypes", x => x.Id);
+                    table.PrimaryKey("PK_GardenType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "GrowStages",
+                name: "GrowStage",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -39,11 +40,11 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GrowStages", x => x.Id);
+                    table.PrimaryKey("PK_GrowStage", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "LightNeeds",
+                name: "LightNeed",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -54,11 +55,11 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LightNeeds", x => x.Id);
+                    table.PrimaryKey("PK_LightNeed", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlantTypes",
+                name: "PlantType",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -69,11 +70,11 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlantTypes", x => x.Id);
+                    table.PrimaryKey("PK_PlantType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "WateringNeeds",
+                name: "WateringNeed",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -84,11 +85,11 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WateringNeeds", x => x.Id);
+                    table.PrimaryKey("PK_WateringNeed", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Groups",
+                name: "Group",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -100,9 +101,9 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Groups", x => x.Id);
+                    table.PrimaryKey("PK_Group", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Groups_AspNetUsers_UserId",
+                        name: "FK_Group_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -110,7 +111,7 @@ namespace GardenAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Gardens",
+                name: "Garden",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -123,16 +124,16 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Gardens", x => x.Id);
+                    table.PrimaryKey("PK_Garden", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Gardens_GardenTypes_GardenTypeId",
+                        name: "FK_Garden_GardenType_GardenTypeId",
                         column: x => x.GardenTypeId,
-                        principalTable: "GardenTypes",
+                        principalTable: "GardenType",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlantVarieties",
+                name: "PlantVariety",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -144,16 +145,16 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlantVarieties", x => x.Id);
+                    table.PrimaryKey("PK_PlantVariety", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PlantVarieties_PlantTypes_PlantTypeId",
+                        name: "FK_PlantVariety_PlantType_PlantTypeId",
                         column: x => x.PlantTypeId,
-                        principalTable: "PlantTypes",
+                        principalTable: "PlantType",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Plants",
+                name: "Plant",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -178,98 +179,98 @@ namespace GardenAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Plants", x => x.Id);
+                    table.PrimaryKey("PK_Plant", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Plants_Groups_GroupId",
+                        name: "FK_Plant_Group_GroupId",
                         column: x => x.GroupId,
-                        principalTable: "Groups",
+                        principalTable: "Group",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Plants_GrowStages_StageId",
+                        name: "FK_Plant_GrowStage_StageId",
                         column: x => x.StageId,
-                        principalTable: "GrowStages",
+                        principalTable: "GrowStage",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Plants_LightNeeds_LightNeedId",
+                        name: "FK_Plant_LightNeed_LightNeedId",
                         column: x => x.LightNeedId,
-                        principalTable: "LightNeeds",
+                        principalTable: "LightNeed",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Plants_PlantTypes_PlantTypeId",
+                        name: "FK_Plant_PlantType_PlantTypeId",
                         column: x => x.PlantTypeId,
-                        principalTable: "PlantTypes",
+                        principalTable: "PlantType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Plants_PlantVarieties_PlantVarietyId",
+                        name: "FK_Plant_PlantVariety_PlantVarietyId",
                         column: x => x.PlantVarietyId,
-                        principalTable: "PlantVarieties",
+                        principalTable: "PlantVariety",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Plants_WateringNeeds_WateringNeedId",
+                        name: "FK_Plant_WateringNeed_WateringNeedId",
                         column: x => x.WateringNeedId,
-                        principalTable: "WateringNeeds",
+                        principalTable: "WateringNeed",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Gardens_GardenTypeId",
-                table: "Gardens",
+                name: "IX_Garden_GardenTypeId",
+                table: "Garden",
                 column: "GardenTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Gardens_UserId",
-                table: "Gardens",
+                name: "IX_Garden_UserId",
+                table: "Garden",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Groups_UserId",
-                table: "Groups",
+                name: "IX_Group_UserId",
+                table: "Group",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plants_GroupId",
-                table: "Plants",
+                name: "IX_Plant_GroupId",
+                table: "Plant",
                 column: "GroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plants_LightNeedId",
-                table: "Plants",
+                name: "IX_Plant_LightNeedId",
+                table: "Plant",
                 column: "LightNeedId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plants_PlantTypeId",
-                table: "Plants",
+                name: "IX_Plant_PlantTypeId",
+                table: "Plant",
                 column: "PlantTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plants_PlantVarietyId",
-                table: "Plants",
+                name: "IX_Plant_PlantVarietyId",
+                table: "Plant",
                 column: "PlantVarietyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plants_StageId",
-                table: "Plants",
+                name: "IX_Plant_StageId",
+                table: "Plant",
                 column: "StageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plants_UserId",
-                table: "Plants",
+                name: "IX_Plant_UserId",
+                table: "Plant",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plants_WateringNeedId",
-                table: "Plants",
+                name: "IX_Plant_WateringNeedId",
+                table: "Plant",
                 column: "WateringNeedId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlantVarieties_PlantTypeId",
-                table: "PlantVarieties",
+                name: "IX_PlantVariety_PlantTypeId",
+                table: "PlantVariety",
                 column: "PlantTypeId");
         }
 
@@ -277,31 +278,31 @@ namespace GardenAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Gardens");
+                name: "Garden");
 
             migrationBuilder.DropTable(
-                name: "Plants");
+                name: "Plant");
 
             migrationBuilder.DropTable(
-                name: "GardenTypes");
+                name: "GardenType");
 
             migrationBuilder.DropTable(
-                name: "Groups");
+                name: "Group");
 
             migrationBuilder.DropTable(
-                name: "GrowStages");
+                name: "GrowStage");
 
             migrationBuilder.DropTable(
-                name: "LightNeeds");
+                name: "LightNeed");
 
             migrationBuilder.DropTable(
-                name: "PlantVarieties");
+                name: "PlantVariety");
 
             migrationBuilder.DropTable(
-                name: "WateringNeeds");
+                name: "WateringNeed");
 
             migrationBuilder.DropTable(
-                name: "PlantTypes");
+                name: "PlantType");
         }
     }
 }

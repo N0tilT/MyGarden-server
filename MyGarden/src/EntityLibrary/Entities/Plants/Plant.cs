@@ -3,10 +3,12 @@ using EntitiesLibrary.Data;
 using EntitiesLibrary.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntitiesLibrary.Plants
 {
     [Index(nameof(UserId))]
+    [Table(nameof(Plant))]
     public class Plant : IdentifiableEntity, IHasUserId
     {
 

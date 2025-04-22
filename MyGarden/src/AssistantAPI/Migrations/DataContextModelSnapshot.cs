@@ -41,7 +41,10 @@ namespace AssistantAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GrowStage");
+                    b.ToTable("GrowStage", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.LightNeed", b =>
@@ -63,7 +66,10 @@ namespace AssistantAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LightNeed");
+                    b.ToTable("LightNeed", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.PlantType", b =>
@@ -85,7 +91,10 @@ namespace AssistantAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PlantType");
+                    b.ToTable("PlantType", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>
@@ -112,7 +121,10 @@ namespace AssistantAPI.Migrations
 
                     b.HasIndex("PlantTypeId");
 
-                    b.ToTable("PlantVariety");
+                    b.ToTable("PlantVariety", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.WateringNeed", b =>
@@ -134,7 +146,10 @@ namespace AssistantAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WateringNeed");
+                    b.ToTable("WateringNeed", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Events.Event", b =>
@@ -146,7 +161,9 @@ namespace AssistantAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("current_timestamp");
 
                     b.Property<DateTime?>("Date")
                         .HasColumnType("timestamp with time zone");
@@ -155,7 +172,8 @@ namespace AssistantAPI.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -170,7 +188,7 @@ namespace AssistantAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Events");
+                    b.ToTable("Event");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Events.Notification", b =>
@@ -222,7 +240,10 @@ namespace AssistantAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Group");
+                    b.ToTable("Group", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Plants.Plant", b =>
@@ -301,7 +322,10 @@ namespace AssistantAPI.Migrations
 
                     b.HasIndex("WateringNeedId");
 
-                    b.ToTable("Plant");
+                    b.ToTable("Plant", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
                 });
 
             modelBuilder.Entity("EntitiesLibrary.User", b =>
@@ -359,7 +383,10 @@ namespace AssistantAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("User", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.PlantVariety", b =>

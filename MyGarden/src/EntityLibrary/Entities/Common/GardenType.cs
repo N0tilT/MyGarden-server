@@ -1,9 +1,11 @@
 ﻿using EntitiesLibrary.Data;
 using EntitiesLibrary.Gardens;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntitiesLibrary.Common
 {
+    [Table(nameof(GardenType))]
     public class GardenType : CommonEntity
     {
         //None,

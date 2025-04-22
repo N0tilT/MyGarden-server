@@ -2,10 +2,12 @@
 using EntitiesLibrary.Plants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntitiesLibrary.Events
 {
     [Index(nameof(UserId))]
+    [Table(nameof(Event))]
     public class Event : IdentifiableEntity, IHasUserId
     {
         /*                   __ _                       _   _

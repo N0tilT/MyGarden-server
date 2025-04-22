@@ -1,9 +1,12 @@
 ﻿using EntitiesLibrary.Data;
 using EntitiesLibrary.Plants;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntitiesLibrary.Common
 {
+
+    [Table(nameof(WateringNeed))]
     public class WateringNeed : CommonEntity
     {
         //None,

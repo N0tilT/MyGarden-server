@@ -1,8 +1,11 @@
-﻿using EntitiesLibrary.Data;
+﻿using EntitiesLibrary.Common;
+using EntitiesLibrary.Data;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntitiesLibrary.Events
 {
+    [Table(nameof(Notification))]
     public class Notification : IdentifiableEntity
     {
         /*                   __ _                       _   _

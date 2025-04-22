@@ -155,16 +155,16 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/api/garden_type",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamPathTemplate": "/api/event",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "gardenapi",
+          "Host": "assistantapi",
           "Port": 8080
         }
       ],
-      "DownstreamPathTemplate": "/api/garden_type",
+      "DownstreamPathTemplate": "/api/event",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []

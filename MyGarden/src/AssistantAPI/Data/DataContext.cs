@@ -1,5 +1,8 @@
-﻿using EntitiesLibrary.Data;
+﻿using EntitiesLibrary;
+using EntitiesLibrary.Common;
+using EntitiesLibrary.Data;
 using EntitiesLibrary.Events;
+using EntitiesLibrary.Plants;
 using Microsoft.EntityFrameworkCore;
 
 namespace AssistantAPI.Data
@@ -16,7 +19,6 @@ namespace AssistantAPI.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             Configuration.ConfigureContext(optionsBuilder);
-
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -33,8 +35,9 @@ namespace AssistantAPI.Data
                 await Database.MigrateAsync();
                 return await Database.CanConnectAsync();
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
@@ -46,7 +49,15 @@ namespace AssistantAPI.Data
         /// <param name="modelBuilder">Набор интерфейсов настройки модели.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.ApplyConfiguration(new Group.Configuration(Configuration));
+            modelBuilder.ApplyConfiguration(new Event.Configuration(Configuration));
+            modelBuilder.Entity<GrowStage>().ToTable("GrowStage", t => t.ExcludeFromMigrations());
+            modelBuilder.Entity<LightNeed>().ToTable("LightNeed", t => t.ExcludeFromMigrations());
+            modelBuilder.Entity<PlantType>().ToTable("PlantType", t => t.ExcludeFromMigrations());
+            modelBuilder.Entity<User>().ToTable("User", t => t.ExcludeFromMigrations());
+            modelBuilder.Entity<WateringNeed>().ToTable("WateringNeed", t => t.ExcludeFromMigrations());
+            modelBuilder.Entity<PlantVariety>().ToTable("PlantVariety", t => t.ExcludeFromMigrations());
+            modelBuilder.Entity<Group>().ToTable("Group", t => t.ExcludeFromMigrations());
+            modelBuilder.Entity<Plant>().ToTable("Plant", t => t.ExcludeFromMigrations());
 
             base.OnModelCreating(modelBuilder);
         }

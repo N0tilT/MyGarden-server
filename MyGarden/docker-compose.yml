@@ -140,6 +140,37 @@ services:
           memory: 1G
     networks:
       - postgres
+  authapi:
+    stop_grace_period: 30s
+    stop_signal: SIGTERM
+    container_name: auth-api
+    image: ${DOCKER_REGISTRY-}authapi
+    build:
+      context: .
+      dockerfile: src/AuthAPI/Dockerfile
+    environment:
+      - DB_HOST=postgres
+      - POSTGRES_DB=plantsdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123Secret_a
+      - APP_NAME=auth
+    depends_on:
+      postgres:
+        condition: service_healthy
+      loki:
+        condition: service_started
+    networks:
+      - backend
+    healthcheck:
+      test: curl --fail http://localhost:8080/health || exit 1
+      interval: 2s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    labels:
+      - "app=auth"
+      - "service=backend"
+    logging: *default-logging
 
   gardenapi:
     stop_grace_period: 30s
@@ -206,38 +237,6 @@ services:
       start_period: 5s
     labels:
       - "app=assistant"
-      - "service=backend"
-    logging: *default-logging
-
-  authapi:
-    stop_grace_period: 30s
-    stop_signal: SIGTERM
-    container_name: auth-api
-    image: ${DOCKER_REGISTRY-}authapi
-    build:
-      context: .
-      dockerfile: src/AuthAPI/Dockerfile
-    environment:
-      - DB_HOST=postgres
-      - POSTGRES_DB=plantsdb
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123Secret_a
-      - APP_NAME=auth
-    depends_on:
-      postgres:
-        condition: service_healthy
-      loki:
-        condition: service_started
-    networks:
-      - backend
-    healthcheck:
-      test: curl --fail http://localhost:8080/health || exit 1
-      interval: 2s
-      timeout: 5s
-      retries: 3
-      start_period: 5s
-    labels:
-      - "app=auth"
       - "service=backend"
     logging: *default-logging
 

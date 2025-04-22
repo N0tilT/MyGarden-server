@@ -2,10 +2,12 @@
 using EntitiesLibrary.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntitiesLibrary.Plants
 {
     [Index(nameof(UserId))]
+    [Table(nameof(Group))]
     public class Group : CommonEntity, IHasUserId
     {
         /*                   __ _                       _   _

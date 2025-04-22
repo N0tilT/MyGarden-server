@@ -22,9 +22,9 @@ namespace AssistantAPI.Controller
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции со списком событий.</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EventDTO>>> Get([FromQuery] string userId, [FromBody] List<int> ids)
+        public async Task<ActionResult<IEnumerable<EventDTO>>> Get([FromQuery] string userId, [FromQuery] List<int>? ids, [FromQuery] List<int> plantIds )
         {
-            var events = (await DataEntityService.Get(((DataContext)DataEntityService.DataContext).Events, userId, ids)).Select(x => x.ToDTO()).ToList();
+            var events = (await DataEntityService.Get(((DataContext)DataEntityService.DataContext).Events, userId, ids,plantIds)).Select(x => x.ToDTO()).ToList();
             return Ok(events);
         }
 
