@@ -1,4 +1,5 @@
-﻿using EntitiesLibrary;
+﻿using AuthAPI.Data;
+using EntitiesLibrary;
 using EntitiesLibrary.Security;
 using EntityLibrary.Entities.Security;
 using JwtAuthenticationManager;
@@ -38,6 +39,7 @@ namespace AuthAPI.Controllers
                     user.RefreshToken = refreshToken;
                     user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
                     var userRoles = await _userManager.GetRolesAsync(user);
+                    await _userManager.UpdateAsync(user);
                     return Ok(
 
                         new SecurityResponse
@@ -46,6 +48,7 @@ namespace AuthAPI.Controllers
                             Token = _jwtTokenHandler.GenerateJwtToken(user, userRoles.First()),
                             RefreshToken = refreshToken
                         });
+
                 }
             }
             return BadRequest(request);
@@ -81,6 +84,7 @@ namespace AuthAPI.Controllers
                 user.RefreshToken = refreshToken;
                 user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
 
+                await _userManager.UpdateAsync(user);
                 return Ok(
 
                         new SecurityResponse
