@@ -19,7 +19,7 @@ namespace EntitiesLibrary.Data
         /// <summary>
         ///     Тип полей даты и времени в базе данных.
         /// </summary>
-        internal override string DateTimeType => "timestamp with time zone";
+        internal override string DateTimeType => "timestamp";
 
         /// <summary>
         ///     Указатель использования текущих даты и времени

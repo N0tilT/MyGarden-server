@@ -162,7 +162,7 @@ namespace AssistantAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<DateTime?>("Date")
@@ -176,7 +176,7 @@ namespace AssistantAPI.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("UserId")
                         .IsRequired()

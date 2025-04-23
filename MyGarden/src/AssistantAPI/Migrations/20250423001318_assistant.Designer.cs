@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AssistantAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250422232546_assistant")]
+    [Migration("20250423001318_assistant")]
     partial class assistant
     {
         /// <inheritdoc />
@@ -165,7 +165,7 @@ namespace AssistantAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<DateTime?>("Date")
@@ -179,7 +179,7 @@ namespace AssistantAPI.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("UserId")
                         .IsRequired()
