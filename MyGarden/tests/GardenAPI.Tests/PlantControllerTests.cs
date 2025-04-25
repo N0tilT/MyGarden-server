@@ -32,7 +32,9 @@ namespace PlantTest
                 BiologyTitle = "meow",
                 UserId = "meow",
                 WateringNeedId = 1,
-                GroupId = 0
+                GroupId = 0,
+                PlantTypeId = 1,
+                PlantVarietyId = 1,
             },
             new RequestPlantDTO {
                 LightNeedId = 1,
@@ -41,7 +43,9 @@ namespace PlantTest
                 BiologyTitle = "meow2",
                 UserId = "meow2",
                 WateringNeedId = 1,
-                GroupId = 0
+                GroupId = 0,
+                PlantTypeId = 1,
+                PlantVarietyId = 1,
             }
         };
             // Act
@@ -89,7 +93,9 @@ namespace PlantTest
                 BiologyTitle = "meow",
                 UserId = "meow",
                 WateringNeedId = 1,
-                GroupId = 0
+                GroupId = 0,
+                PlantTypeId = 1,
+                PlantVarietyId = 1,
             },
             new RequestPlantDTO {
                 Id = 2,
@@ -99,7 +105,9 @@ namespace PlantTest
                 BiologyTitle = "meow3",
                 UserId = "meow2",
                 WateringNeedId = 1,
-                GroupId = 0
+                GroupId = 0,
+                PlantTypeId = 1,
+                PlantVarietyId = 1,
             }
         };
 

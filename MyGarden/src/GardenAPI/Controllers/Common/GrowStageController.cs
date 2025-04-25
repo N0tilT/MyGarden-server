@@ -8,12 +8,12 @@ namespace GardenAPI.Controllers.Common
 {
     [Route("api/stage")]
     [ApiController]
-    public class GrowStageController(GrowStageServive dataEntityService) : ControllerBase
+    public class GrowStageController(GrowStageService dataEntityService) : ControllerBase
     {
         /// <summary>
         ///     Сервис моделей.
         /// </summary>
-        private GrowStageServive DataEntityService { get; } = dataEntityService;
+        private GrowStageService DataEntityService { get; } = dataEntityService;
 
         /// <summary>
         ///     Получить список стадий роста растения.

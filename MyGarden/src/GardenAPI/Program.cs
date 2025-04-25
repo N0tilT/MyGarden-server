@@ -47,7 +47,7 @@ application.Run();
 
 void RegisterCoreServices(IServiceCollection services)
 {
-    services.AddScoped<GrowStageServive>();
+    services.AddScoped<GrowStageService>();
     services.AddScoped<LightNeedService>();
     services.AddScoped<WateringNeedService>();
     services.AddScoped<GroupService>();
@@ -73,7 +73,7 @@ async Task InitializeDataSources(WebApplication application)
     var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
     await dataContext.TryInitializeAsync();
 
-    await scope.ServiceProvider.GetRequiredService<GrowStageServive>().Set(dataContext.GrowStages, new List<GrowStage>{
+    await scope.ServiceProvider.GetRequiredService<GrowStageService>().Set(dataContext.GrowStages, new List<GrowStage>{
                 new GrowStage{Id = 1,Title="����"},
                 new GrowStage{Id = 2,Title="�����������" },
                 new GrowStage{Id = 3,Title="����"},
@@ -94,7 +94,7 @@ async Task InitializeDataSources(WebApplication application)
                 new WateringNeed{Id=3,Title="�������"}
             });
 
-    await scope.ServiceProvider.GetRequiredService<GrowStageServive>().Set(dataContext.GrowStages, new List<GrowStage> {
+    await scope.ServiceProvider.GetRequiredService<GrowStageService>().Set(dataContext.GrowStages, new List<GrowStage> {
                 new GrowStage{Id=1,Title="������"},
                 new GrowStage{Id=2,Title="�������"},
                 new GrowStage{Id=3,Title="�������"}

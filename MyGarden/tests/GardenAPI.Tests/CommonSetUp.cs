@@ -13,7 +13,9 @@ namespace GardenAPI.Tests
     internal class CommonSetUp
     {
         internal required DataContext _dataContext;
-        internal required GrowStageServive _growStageService;
+        internal required PlantTypeService _plantTypeService;
+        internal required PlantVarietyService _plantVarietyService;
+        internal required GrowStageService _growStageService;
         internal required LightNeedService _lightNeedService;
         internal required WateringNeedService _wateringNeedService;
         internal required GroupService _groupService;
@@ -26,7 +28,9 @@ namespace GardenAPI.Tests
         {
             _dataContext = CreateInMemoryDbContext();
 
-            _growStageService = new GrowStageServive(_dataContext);
+            _plantTypeService = new PlantTypeService(_dataContext);
+            _plantVarietyService = new PlantVarietyService(_dataContext);
+            _growStageService = new GrowStageService(_dataContext);
             _lightNeedService = new LightNeedService(_dataContext);
             _wateringNeedService = new WateringNeedService(_dataContext);
             _groupService = new GroupService(_dataContext);
@@ -56,10 +60,18 @@ namespace GardenAPI.Tests
                     new WateringNeed{Id=2,Title="Средний"},
                     new WateringNeed{Id=3,Title="Высокий"}
                 ]),
+                _plantTypeService.Set(_dataContext.PlantTypes,
+                [
+                    new PlantType{Id=1,Title="Base"}
+                ]),
+                _plantVarietyService.Set(_dataContext.PlantVarieties,
+                [
+                    new PlantVariety{Id=1,Title="Base",PlantTypeId=1}
+                ]),
             _groupService.Set(_dataContext.Groups,
             [
                     new Group{Id=0,UserId = "default",Title="default"},
-                ])
+            ])
             ).GetAwaiter().GetResult();
 
         }
