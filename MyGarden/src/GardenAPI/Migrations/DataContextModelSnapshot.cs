@@ -54,7 +54,7 @@ namespace GardenAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<string>("Title")
@@ -62,7 +62,7 @@ namespace GardenAPI.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -79,7 +79,7 @@ namespace GardenAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<string>("Title")
@@ -87,7 +87,7 @@ namespace GardenAPI.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -104,7 +104,7 @@ namespace GardenAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<string>("Title")
@@ -112,7 +112,7 @@ namespace GardenAPI.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -129,7 +129,7 @@ namespace GardenAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<int?>("PlantTypeId")
@@ -140,7 +140,7 @@ namespace GardenAPI.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -159,7 +159,7 @@ namespace GardenAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<string>("Title")
@@ -167,7 +167,7 @@ namespace GardenAPI.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -188,14 +188,14 @@ namespace GardenAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<int?>("GardenTypeId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -220,7 +220,7 @@ namespace GardenAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<string>("Title")
@@ -228,7 +228,7 @@ namespace GardenAPI.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -256,7 +256,7 @@ namespace GardenAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
                     b.Property<string>("Description")
@@ -302,7 +302,7 @@ namespace GardenAPI.Migrations
                         .HasColumnType("character varying(10240)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("UserId")
                         .IsRequired()
