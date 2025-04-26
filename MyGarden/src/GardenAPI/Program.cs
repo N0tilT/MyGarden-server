@@ -74,39 +74,37 @@ async Task InitializeDataSources(WebApplication application)
     await dataContext.TryInitializeAsync();
 
     await scope.ServiceProvider.GetRequiredService<GrowStageService>().Set(dataContext.GrowStages, new List<GrowStage>{
-                new GrowStage{Id = 1,Title="����"},
-                new GrowStage{Id = 2,Title="�����������" },
-                new GrowStage{Id = 3,Title="����"},
-                new GrowStage{Id = 4,Title="��������"},
-                new GrowStage{Id = 5,Title="������������"},
-                new GrowStage{Id = 6,Title="������"}
+                new GrowStage{Id = 1,Title="Нет"},
+                new GrowStage{Id = 2,Title="Семя" },
+                new GrowStage{Id = 3,Title="Росток"},
+                new GrowStage{Id = 4,Title="Молодой"},
+                new GrowStage{Id = 5,Title="Плодоносящий"},
+                new GrowStage{Id = 6,Title="Состарившееся"}
             });
 
     await scope.ServiceProvider.GetRequiredService<LightNeedService>().Set(dataContext.LightNeeds, new List<LightNeed> {
-                new LightNeed{Id=1,Title="������"},
-                new LightNeed{Id=2,Title="�������"},
-                new LightNeed{Id=3,Title="�������"}
+                new LightNeed{Id=1,Title="Нет"},
+                new LightNeed{Id=2,Title="Низкая"},
+                new LightNeed{Id=3,Title="Средняя"},
+                new LightNeed{Id=4,Title="Высокая"}
     });
 
     await scope.ServiceProvider.GetRequiredService<WateringNeedService>().Set(dataContext.WateringNeeds, new List<WateringNeed> {
-                new WateringNeed{Id=1,Title="������"}, 
-                new WateringNeed{Id=2,Title="�������"},
-                new WateringNeed{Id=3,Title="�������"}
+                new WateringNeed{Id=1,Title="Нет"},
+                new WateringNeed{Id=2,Title="Низкая"},
+                new WateringNeed{Id=3,Title="Средняя"},
+                new WateringNeed{Id=4,Title="Высокая"}
             });
 
-    await scope.ServiceProvider.GetRequiredService<GrowStageService>().Set(dataContext.GrowStages, new List<GrowStage> {
-                new GrowStage{Id=1,Title="������"},
-                new GrowStage{Id=2,Title="�������"},
-                new GrowStage{Id=3,Title="�������"}
-            });
     await scope.ServiceProvider.GetRequiredService<PlantTypeService>().Set(dataContext.PlantTypes, new List<PlantType> {
-                new PlantType{Id=1,Title="������"},
-                new PlantType{Id=2,Title="�������"},
-                new PlantType{Id=3,Title="�������"}
+                new PlantType{Id=1,Title="Без типа"},
+                new PlantType{Id=2,Title="Цветок"},
+                new PlantType{Id=3,Title="Дерево"},
+                new PlantType{Id=4,Title="Овощ"},
             });
     await scope.ServiceProvider.GetRequiredService<PlantVarietyService>().Set(dataContext.PlantVarieties, new List<PlantVariety> {
-                new PlantVariety{Id=1,Title="������"},
-                new PlantVariety{Id=2,Title="�������"},
-                new PlantVariety{Id=3,Title="�������"}
+                new PlantVariety{Id=1,Title="Без вида",PlantTypeId=1},
+                new PlantVariety{Id=2,Title="Роза",PlantTypeId=2},
+                new PlantVariety{Id=3,Title="Огурец",PlantTypeId=3}
             });
 }

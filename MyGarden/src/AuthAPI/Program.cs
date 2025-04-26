@@ -7,6 +7,12 @@ using Prometheus;
 using Serilog;
 using Serilog.Sinks.Grafana.Loki;
 
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo
+    .GrafanaLoki("http://loki:3100")
+    .CreateLogger();
+
 var builder = WebApplication.CreateBuilder(args);
 RegisterDataSources(builder.Services);
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -45,10 +51,6 @@ app.MapControllers();
 
 await InitializeDataSources(app);
 
-Log.Logger = new LoggerConfiguration()
-    .WriteTo
-    .GrafanaLoki("http://loki:3100")
-    .CreateLogger();
 
 app.UseMetricServer(url: "/metrics");
 app.UseHttpMetrics();

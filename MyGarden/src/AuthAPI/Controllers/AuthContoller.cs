@@ -5,6 +5,7 @@ using EntityLibrary.Entities.Security;
 using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 
 namespace AuthAPI.Controllers
 {
@@ -16,6 +17,7 @@ namespace AuthAPI.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly JwtTokenHandler _jwtTokenHandler;
+
 
         public AuthContoller(RoleManager<IdentityRole> roleManager, UserManager<User> userManager, SignInManager<User> signInManager, JwtTokenHandler jwtTokenHandler)
         {
@@ -40,12 +42,14 @@ namespace AuthAPI.Controllers
                     user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
                     var userRoles = await _userManager.GetRolesAsync(user);
                     await _userManager.UpdateAsync(user);
+                    var token = _jwtTokenHandler.GenerateJwtToken(user, userRoles.First());
+
                     return Ok(
 
                         new SecurityResponse
                         {
                             User = user,
-                            Token = _jwtTokenHandler.GenerateJwtToken(user, userRoles.First()),
+                            Token = token,
                             RefreshToken = refreshToken
                         });
 
@@ -83,6 +87,7 @@ namespace AuthAPI.Controllers
                 var refreshToken = _jwtTokenHandler.HashRefreshToken(_jwtTokenHandler.GenerateRefreshToken());
                 user.RefreshToken = refreshToken;
                 user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
+                var token = _jwtTokenHandler.GenerateJwtToken(user, request.RoleName);
 
                 await _userManager.UpdateAsync(user);
                 return Ok(
@@ -90,7 +95,7 @@ namespace AuthAPI.Controllers
                         new SecurityResponse
                         {
                             User = user,
-                            Token = _jwtTokenHandler.GenerateJwtToken(user, request.RoleName),
+                            Token = token,
                             RefreshToken = refreshToken
                         });
             }
