@@ -37,8 +37,9 @@ namespace AuthAPI.Controllers
                 var user = _userManager.Users.SingleOrDefault(r => r.Email == request.Email);
                 if (user != null)
                 {
-                    var refreshToken = _jwtTokenHandler.HashRefreshToken(_jwtTokenHandler.GenerateRefreshToken());
-                    user.RefreshToken = refreshToken;
+                    var originalRefreshToken = _jwtTokenHandler.GenerateRefreshToken();
+                    var hashedRefreshToken = _jwtTokenHandler.HashRefreshToken(originalRefreshToken);
+                    user.RefreshToken = hashedRefreshToken;
                     user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
                     var userRoles = await _userManager.GetRolesAsync(user);
                     await _userManager.UpdateAsync(user);
@@ -50,7 +51,7 @@ namespace AuthAPI.Controllers
                         {
                             User = user,
                             Token = token,
-                            RefreshToken = refreshToken
+                            RefreshToken = originalRefreshToken
                         });
 
                 }
@@ -84,8 +85,9 @@ namespace AuthAPI.Controllers
                 }
                 await _userManager.AddToRoleAsync(user, request.RoleName);
 
-                var refreshToken = _jwtTokenHandler.HashRefreshToken(_jwtTokenHandler.GenerateRefreshToken());
-                user.RefreshToken = refreshToken;
+                var originalRefreshToken = _jwtTokenHandler.GenerateRefreshToken();
+                var hashedRefreshToken = _jwtTokenHandler.HashRefreshToken(originalRefreshToken);
+                user.RefreshToken = hashedRefreshToken;
                 user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
                 var token = _jwtTokenHandler.GenerateJwtToken(user, request.RoleName);
 
@@ -96,7 +98,7 @@ namespace AuthAPI.Controllers
                         {
                             User = user,
                             Token = token,
-                            RefreshToken = refreshToken
+                            RefreshToken = originalRefreshToken
                         });
             }
             return BadRequest(result.Errors);
@@ -125,25 +127,32 @@ namespace AuthAPI.Controllers
         [HttpPost("refresh")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
         {
-            var user = _userManager.Users.FirstOrDefault(u => u.RefreshToken == request.Token);
+            var hashedToken = _jwtTokenHandler.HashRefreshToken(request.Token);
+            var user = _userManager.Users.FirstOrDefault(u => u.RefreshToken == hashedToken);
 
             if (user == null)
             {
-                return Unauthorized("Invalid refresh token");
+                return Unauthorized(hashedToken);
+            }
+            if (user.RefreshTokenExpiry < DateTime.UtcNow)
+            {
+                return Unauthorized(hashedToken);
             }
 
             var userRoles = await _userManager.GetRolesAsync(user);
             var accessToken = _jwtTokenHandler.GenerateJwtToken(user, userRoles.First());
 
-            var refreshToken = _jwtTokenHandler.HashRefreshToken(_jwtTokenHandler.GenerateRefreshToken());
-            user.RefreshToken = refreshToken;
+            var newOriginalRefreshToken = _jwtTokenHandler.GenerateRefreshToken();
+            var newHashedRefreshToken = _jwtTokenHandler.HashRefreshToken(newOriginalRefreshToken);
+            user.RefreshToken = newHashedRefreshToken;
             user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
             await _userManager.UpdateAsync(user);
+
 
             return Ok(new SecurityResponse
             {
                 Token = accessToken,
-                RefreshToken = refreshToken
+                RefreshToken = newOriginalRefreshToken
             });
         }
         [HttpPost("logout")]
