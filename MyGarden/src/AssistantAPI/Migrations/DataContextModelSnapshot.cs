@@ -22,6 +22,28 @@ namespace AssistantAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("EntitiesLibrary.Common.GardenType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GardenType");
+                });
+
             modelBuilder.Entity("EntitiesLibrary.Common.GrowStage", b =>
                 {
                     b.Property<int>("Id")
@@ -56,13 +78,16 @@ namespace AssistantAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("timestamp")
+                        .HasDefaultValueSql("current_timestamp");
 
                     b.Property<string>("Title")
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -213,6 +238,42 @@ namespace AssistantAPI.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("Notification");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Beds")
+                        .IsRequired()
+                        .HasColumnType("jsonb");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("timestamp")
+                        .HasDefaultValueSql("current_timestamp");
+
+                    b.Property<int?>("GardenTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GardenTypeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Garden");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
@@ -420,6 +481,13 @@ namespace AssistantAPI.Migrations
                     b.Navigation("Event");
                 });
 
+            modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
+                {
+                    b.HasOne("EntitiesLibrary.Common.GardenType", null)
+                        .WithMany("Gardens")
+                        .HasForeignKey("GardenTypeId");
+                });
+
             modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
                 {
                     b.HasOne("EntitiesLibrary.User", "User")
@@ -470,6 +538,11 @@ namespace AssistantAPI.Migrations
                     b.Navigation("Stage");
 
                     b.Navigation("WateringNeed");
+                });
+
+            modelBuilder.Entity("EntitiesLibrary.Common.GardenType", b =>
+                {
+                    b.Navigation("Gardens");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.GrowStage", b =>

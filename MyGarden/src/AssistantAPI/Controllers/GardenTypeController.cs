@@ -1,10 +1,10 @@
-﻿using EntitiesLibrary.Common;
+﻿using AssistantAPI.Data;
+using AssistantAPI.Service.Gardens;
+using EntitiesLibrary.Common;
 using EntitiesLibrary.Transfer.Common;
-using GardenAPI.Data;
-using GardenAPI.Service.Common;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GardenAPI.Controllers.Common
+namespace AssistantAPI.Controllers.Common
 {
     [Route("api/garden_type")]
     [ApiController]

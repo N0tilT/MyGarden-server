@@ -1,7 +1,6 @@
 using EntitiesLibrary.Common;
 using EntitiesLibrary.Data;
 using EntitiesLibrary.Middleware;
-using EntitiesLibrary.Plants;
 using GardenAPI.Data;
 using GardenAPI.Service.Common;
 using GardenAPI.Service.Plants;

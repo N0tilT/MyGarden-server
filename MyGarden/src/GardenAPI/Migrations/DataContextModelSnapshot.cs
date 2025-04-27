@@ -22,28 +22,6 @@ namespace GardenAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("EntitiesLibrary.Common.GardenType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GardenType");
-                });
-
             modelBuilder.Entity("EntitiesLibrary.Common.GrowStage", b =>
                 {
                     b.Property<int>("Id")
@@ -172,42 +150,6 @@ namespace GardenAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WateringNeed");
-                });
-
-            modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Beds")
-                        .IsRequired()
-                        .HasColumnType("jsonb");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("timestamp")
-                        .HasDefaultValueSql("current_timestamp");
-
-                    b.Property<int?>("GardenTypeId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GardenTypeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Garden");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
@@ -397,13 +339,6 @@ namespace GardenAPI.Migrations
                     b.Navigation("PlantType");
                 });
 
-            modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
-                {
-                    b.HasOne("EntitiesLibrary.Common.GardenType", null)
-                        .WithMany("Gardens")
-                        .HasForeignKey("GardenTypeId");
-                });
-
             modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>
                 {
                     b.HasOne("EntitiesLibrary.User", "User")
@@ -464,11 +399,6 @@ namespace GardenAPI.Migrations
                     b.Navigation("Stage");
 
                     b.Navigation("WateringNeed");
-                });
-
-            modelBuilder.Entity("EntitiesLibrary.Common.GardenType", b =>
-                {
-                    b.Navigation("Gardens");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Common.GrowStage", b =>

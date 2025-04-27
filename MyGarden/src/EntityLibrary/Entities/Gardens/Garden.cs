@@ -49,9 +49,9 @@ namespace EntitiesLibrary.Gardens
                     )
                     .Metadata.SetValueComparer(
                 new ValueComparer<List<Bed>>(
-                    (c1, c2) => c1.SequenceEqual(c2), // Compare element sequences
-                    c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())), // Generate hash code
-                    c => c.ToList() // Create a deep copy for snapshotting
+                    (c1, c2) => c1.SequenceEqual(c2), 
+                    c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+                    c => c.ToList() 
                 )
             ); ;
                 base.Configure(builder);

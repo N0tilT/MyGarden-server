@@ -2,6 +2,7 @@
 using EntitiesLibrary.Common;
 using EntitiesLibrary.Data;
 using EntitiesLibrary.Events;
+using EntitiesLibrary.Gardens;
 using EntitiesLibrary.Plants;
 using Microsoft.EntityFrameworkCore;
 
@@ -59,10 +60,15 @@ namespace AssistantAPI.Data
             modelBuilder.Entity<Group>().ToTable("Group", t => t.ExcludeFromMigrations());
             modelBuilder.Entity<Plant>().ToTable("Plant", t => t.ExcludeFromMigrations());
 
+            modelBuilder.ApplyConfiguration(new Garden.Configuration(Configuration));
+            modelBuilder.ApplyConfiguration(new GardenType.Configuration(Configuration));
+
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Event> Events => Set<Event>();
+        public DbSet<Garden> Gardens => Set<Garden>();
+        public DbSet<GardenType> GardenTypes => Set<GardenType>();
     }
 }
 

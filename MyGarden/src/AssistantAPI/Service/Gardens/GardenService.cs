@@ -1,8 +1,8 @@
-﻿using EntitiesLibrary.Gardens;
+﻿using AssistantAPI.Data;
+using EntitiesLibrary.Gardens;
 using EntitiesLibrary.Services;
-using GardenAPI.Data;
 
-namespace GardenAPI.Service.Gardens
+namespace AssistantAPI.Service.Gardens
 {
     public class GardenService(DataContext dataContext) : HasUserIdEntityService<Garden>(dataContext)
     {

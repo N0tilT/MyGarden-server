@@ -1,4 +1,6 @@
 ﻿using AssistantAPI.Data;
+using AssistantAPI.Service.Gardens;
+using EntitiesLibrary.Common;
 using EntitiesLibrary.Data;
 using EntitiesLibrary.Middleware;
 using GardenAPI.Service.Common;
@@ -46,6 +48,8 @@ application.Run();
 void RegisterCoreServices(IServiceCollection services)
 {
     services.AddScoped<EventService>();
+    services.AddScoped<GardenTypeService>();
+    services.AddScoped<GardenService>();
     services.AddControllers();
 }
 
@@ -64,4 +68,10 @@ async Task InitializeDataSources(WebApplication application)
     using var scope = application.Services.CreateScope();
     var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
     await dataContext.TryInitializeAsync();
+
+    await scope.ServiceProvider.GetRequiredService<GardenTypeService>().Set(dataContext.GardenTypes, new List<GardenType>{
+                new GardenType{Id = 1,Title="Сад"},
+                new GardenType{Id = 2,Title="Полка" },
+            });
 }
+

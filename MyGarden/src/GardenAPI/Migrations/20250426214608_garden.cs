@@ -12,22 +12,7 @@ namespace GardenAPI.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-           
-            migrationBuilder.CreateTable(
-                name: "GardenType",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    Title = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GardenType", x => x.Id);
-                });
-
+          
             migrationBuilder.CreateTable(
                 name: "GrowStage",
                 columns: table => new
@@ -108,28 +93,6 @@ namespace GardenAPI.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Garden",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    Beds = table.Column<string>(type: "jsonb", nullable: false),
-                    GardenTypeId = table.Column<int>(type: "integer", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp", nullable: true, defaultValueSql: "current_timestamp"),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Garden", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Garden_GardenType_GardenTypeId",
-                        column: x => x.GardenTypeId,
-                        principalTable: "GardenType",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -219,16 +182,6 @@ namespace GardenAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Garden_GardenTypeId",
-                table: "Garden",
-                column: "GardenTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Garden_UserId",
-                table: "Garden",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Group_UserId",
                 table: "Group",
                 column: "UserId");
@@ -278,13 +231,7 @@ namespace GardenAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Garden");
-
-            migrationBuilder.DropTable(
                 name: "Plant");
-
-            migrationBuilder.DropTable(
-                name: "GardenType");
 
             migrationBuilder.DropTable(
                 name: "Group");

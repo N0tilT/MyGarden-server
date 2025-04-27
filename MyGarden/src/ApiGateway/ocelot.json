@@ -177,6 +177,50 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/garden_type",
+      "UpstreamHttpMethod": [ "Get"],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "assistantapi",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/garden_type",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": [
+          "Administrator",
+          "User"
+        ]
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/garden",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "assistantapi",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/garden",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": [
+          "Administrator",
+          "User"
+        ]
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/recognize",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamScheme": "http",

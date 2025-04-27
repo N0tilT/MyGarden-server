@@ -56,7 +56,7 @@ jobs:
     - name: Healthcheck containers
       run: | 
         cd MyGarden
-        ./healthcheck.sh postgres 120 > healthcheck_data_logs.txt 
+        ./healthcheck.sh postgres-container 120 > healthcheck_data_logs.txt 
         ./healthcheck.sh garden-api 120 >> healthcheck_data_logs.txt 
         ./healthcheck.sh auth-api 120 >> healthcheck_data_logs.txt 
         ./healthcheck.sh recognize-api 120 >> healthcheck_data_logs.txt 

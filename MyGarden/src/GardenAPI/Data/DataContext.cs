@@ -57,8 +57,6 @@ namespace GardenAPI.Data
             modelBuilder.ApplyConfiguration(new GrowStage.Configuration(Configuration));
             modelBuilder.ApplyConfiguration(new LightNeed.Configuration(Configuration));
             modelBuilder.ApplyConfiguration(new WateringNeed.Configuration(Configuration));
-            modelBuilder.ApplyConfiguration(new Garden.Configuration(Configuration));
-            modelBuilder.ApplyConfiguration(new GardenType.Configuration(Configuration));
             modelBuilder.ApplyConfiguration(new PlantType.Configuration(Configuration));
             modelBuilder.ApplyConfiguration(new PlantVariety.Configuration(Configuration));
             
@@ -71,8 +69,6 @@ namespace GardenAPI.Data
         public DbSet<GrowStage> GrowStages => Set<GrowStage>();
         public DbSet<LightNeed> LightNeeds => Set<LightNeed>();
         public DbSet<WateringNeed> WateringNeeds => Set<WateringNeed>();
-        public DbSet<Garden> Gardens => Set<Garden>();
-        public DbSet<GardenType> GardenTypes => Set<GardenType>();
         public DbSet<PlantType> PlantTypes => Set<PlantType>();
         public DbSet<PlantVariety> PlantVarieties => Set<PlantVariety>();
     }

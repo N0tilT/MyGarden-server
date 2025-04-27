@@ -1,11 +1,11 @@
-﻿using EntitiesLibrary.Transfer.Garden;
-using GardenAPI.Data;
-using GardenAPI.Service.Gardens;
+﻿using AssistantAPI.Data;
+using AssistantAPI.Service.Gardens;
+using EntitiesLibrary.Transfer.Garden;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GardenAPI.Controllers
+namespace AssistantAPI.Controller
 {
-    [Route("api/g")]
+    [Route("api/garden")]
     [ApiController]
     public class GardenController(GardenService dataEntityService) : ControllerBase
     {
