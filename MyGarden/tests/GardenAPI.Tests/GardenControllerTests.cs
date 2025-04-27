@@ -24,9 +24,9 @@ namespace GardenTest
         public async Task Post_ReturnsOkResult_WhenGardensSaved()
         {
             // Arrange
-            var gardenRequest = new List<RequestGardenDTO>
+            var gardenRequest = new List<RequestFlowerBedDTO>
             {
-                new RequestGardenDTO {
+                new RequestFlowerBedDTO {
                     Beds = new List<Bed>(){ new Bed()
                     {
                         Id = 0,
@@ -40,7 +40,7 @@ namespace GardenTest
                     } },
                     UserId = "meow",
                 },
-                new RequestGardenDTO {
+                new RequestFlowerBedDTO {
                     Beds = new List<Bed>(){ new Bed()
                     {
                         Id = 3,
@@ -72,17 +72,17 @@ namespace GardenTest
                 new Garden { UserId = "meow", },
             };
 
-            var p = new List<GardenDTO>();
+            var p = new List<FlowerBedDTO>();
             // Act
             var result = await _gardenController!.Get(userId, ids);
             if (result.Result is OkObjectResult okResult)
             {
-                p = okResult.Value as List<GardenDTO>;
+                p = okResult.Value as List<FlowerBedDTO>;
             }
 
             // ClassicAssert
             ClassicAssert.IsNotNull(result);
-            ClassicAssert.IsAssignableFrom<List<GardenDTO>>(p);
+            ClassicAssert.IsAssignableFrom<List<FlowerBedDTO>>(p);
             ClassicAssert.AreEqual(entities.Count, p?.Count() ?? 0);
         }
 
@@ -90,9 +90,9 @@ namespace GardenTest
         public async Task Post_ReturnsOkResult_WhenGardensChanged()
         {
             // Arrange
-            var request = new List<RequestGardenDTO>
+            var request = new List<RequestFlowerBedDTO>
         {
-            new RequestGardenDTO {
+            new RequestFlowerBedDTO {
                 Id = 1,
                 Beds = new List<Bed>(){ new Bed()
                     {
@@ -107,7 +107,7 @@ namespace GardenTest
                     } },
                 UserId = "meow"
             },
-            new RequestGardenDTO {
+            new RequestFlowerBedDTO {
                 Id = 2,
                 Beds = new List<Bed>(){ new Bed()
                     {

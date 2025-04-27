@@ -1,4 +1,6 @@
-﻿namespace EntitiesLibrary.Transfer.Garden
+﻿using EntitiesLibrary.Gardens;
+
+namespace EntitiesLibrary.Transfer.Garden
 {
     public static class GardenMapper
     {
@@ -7,8 +9,10 @@
             return new Gardens.Garden
             {
                 Id = requestGarden.Id,
+                Title = requestGarden.Title,
                 UserId = requestGarden.UserId,
-                Beds = requestGarden.Beds ?? []
+                Beds = requestGarden.Beds ?? [],
+                GardenTypeId = requestGarden.GardenTypeId
             };
         }
 
@@ -18,8 +22,10 @@
             return new GardenDTO
             {
                 Id = garden.Id,
+                Title = garden.Title,
                 UserId = garden.UserId,
                 Beds = garden.Beds,
+                GardenTypeId = garden.GardenTypeId,
                 CreatedAt = garden.CreatedAt,
                 UpdatedAt = garden.UpdatedAt
             };

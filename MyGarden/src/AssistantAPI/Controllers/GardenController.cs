@@ -22,7 +22,7 @@ namespace AssistantAPI.Controller
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции со списком садов пользователя.</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GardenDTO>>> Get([FromQuery] string userId, [FromBody] List<int> ids)
+        public async Task<ActionResult<IEnumerable<GardenDTO>>> Get([FromQuery] string userId, [FromQuery] List<int> ids)
         {
             var groups = (await DataEntityService.Get(((DataContext)DataEntityService.DataContext).Gardens, userId, ids)).Select(x => x.ToDTO()).ToList();
             return Ok(groups);

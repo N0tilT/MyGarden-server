@@ -257,8 +257,12 @@ namespace AssistantAPI.Migrations
                         .HasColumnType("timestamp")
                         .HasDefaultValueSql("current_timestamp");
 
-                    b.Property<int?>("GardenTypeId")
+                    b.Property<int>("GardenTypeId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp");
@@ -483,9 +487,13 @@ namespace AssistantAPI.Migrations
 
             modelBuilder.Entity("EntitiesLibrary.Gardens.Garden", b =>
                 {
-                    b.HasOne("EntitiesLibrary.Common.GardenType", null)
+                    b.HasOne("EntitiesLibrary.Common.GardenType", "GardenType")
                         .WithMany("Gardens")
-                        .HasForeignKey("GardenTypeId");
+                        .HasForeignKey("GardenTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("GardenType");
                 });
 
             modelBuilder.Entity("EntitiesLibrary.Plants.Group", b =>

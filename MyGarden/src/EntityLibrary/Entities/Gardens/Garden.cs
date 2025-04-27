@@ -60,8 +60,12 @@ namespace EntitiesLibrary.Gardens
 
         #endregion
 
+        public string Title { get; set; }
 
         public required string UserId { get; set; }
         public List<Bed> Beds { get; set; } = [];
+
+        public int GardenTypeId { get; set; }
+        public GardenType? GardenType { get; set; }
     }
 }

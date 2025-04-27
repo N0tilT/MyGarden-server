@@ -78,9 +78,10 @@ namespace AssistantAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: false),
                     UserId = table.Column<string>(type: "text", nullable: false),
                     Beds = table.Column<string>(type: "jsonb", nullable: false),
-                    GardenTypeId = table.Column<int>(type: "integer", nullable: true),
+                    GardenTypeId = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp", nullable: true, defaultValueSql: "current_timestamp"),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp", nullable: true)
                 },
@@ -91,7 +92,8 @@ namespace AssistantAPI.Migrations
                         name: "FK_Garden_GardenType_GardenTypeId",
                         column: x => x.GardenTypeId,
                         principalTable: "GardenType",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
