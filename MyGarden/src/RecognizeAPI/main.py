@@ -33,9 +33,10 @@ async def recognize_plant(image: UploadFile = File(...)):
     with open(f"uploads/{image.filename}", "wb") as buffer:
         shutil.copyfileobj(image.file, buffer)
     identifiers = identify([f"uploads/{image.filename}"],plants_data,top_number=3)
+    print(identifiers)
     for index,id in enumerate(identifiers):
         print(f"ФОТО {index+1} ({id[0]})")
-        print('\n'.join([f"\t{x[0]:<50}\t\t{x[1]}" for x in id[1]]))
+        print('\n'.join([f"{x[0]}\t{x[1]:<50}\t\t{x[2]}" for x in id[1]]))
     result = {"filename": image.filename, "message": '\n'.join([f"\t{x[0]:<50}\t\t{x[1]}" for x in id[1]]), "species": "Example Species"}
     
     return JSONResponse(content=result)

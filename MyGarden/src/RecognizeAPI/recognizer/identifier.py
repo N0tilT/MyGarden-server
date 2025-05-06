@@ -24,11 +24,8 @@ def identify(images,data,top_number = 5):
         for i in range(len(top_indices_tfidf)):
             most_similarity_percentage = max(tfidf_similarities[top_indices_tfidf[i]],
                                             levenshtein_similarities[top_indices_levenshtein[i]])
-            cur_ids.append((data[
-                                top_indices_tfidf[i] 
-                                    if most_similarity_percentage == top_indices_tfidf[i] 
-                                    else top_indices_levenshtein[i]]['title']
-                            ,most_similarity_percentage))
+            index = top_indices_tfidf[i] if most_similarity_percentage == top_indices_tfidf[i] else top_indices_levenshtein[i]
+            cur_ids.append((data[index]['id'],data[index]['title'],data[index]['description'],most_similarity_percentage))
         identifiers.append((item,cur_ids))
     return identifiers
 

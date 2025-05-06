@@ -12,4 +12,4 @@ def get_plants_data():
     rows = cursor.fetchall()
     cursor.close()
     conn.close()
-    return [{'title':row[2],'description':row[3]}for row in rows]
+    return [{'id':row[0],'title':row[2],'description':row[3]}for row in rows]
