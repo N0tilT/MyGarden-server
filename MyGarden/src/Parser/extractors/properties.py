@@ -29,7 +29,7 @@ def get_top_level_properties(data):
         # Если данные не являются списком или словарем, возвращаем пустой список
         return []
 
-with open('C:/Users/timofey.latypov/Documents/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/data/plant_data.json', 'r', encoding='utf-8') as file:
+with open('C:/Users/timofey.latypov/Documents/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/data/output.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 print("Анализ записей растений")
@@ -46,7 +46,7 @@ sorted_counts = [(item,count,f'{percentage:.2f}%') for item,count,percentage in 
 print("Отобранные свойства:\n",sorted_counts)
 print("Количество отобранных свойств:",len(sorted_counts))
 
-with open('C:/Users/timofey.latypov/Documents/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/data/flower_data.json', 'r', encoding='utf-8') as file:
+with open('C:/Users/timofey.latypov/Documents/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/data/output.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 print("Анализ записей цветов")
