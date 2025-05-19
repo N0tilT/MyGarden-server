@@ -1,0 +1,1964 @@
+[
+    {
+        "confidence": {
+            "WateringNeed": 0.5451363906448218,
+            "LightNeed": 0.6228583687198708
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5264773357597557,
+            "LightNeed": 0.5183260132354943
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.49297603901002696,
+            "LightNeed": 0.5844956537600741
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6296978381288808,
+            "LightNeed": 0.5371438192807253
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5580160271171754,
+            "LightNeed": 0.6149806331724086
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5861208435351044,
+            "LightNeed": 0.6119872700463134
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6043439948119577,
+            "LightNeed": 0.5508380290455009
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5713152945092385,
+            "LightNeed": 0.5704762175582131
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5775781874881041,
+            "LightNeed": 0.6308207969701404
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5074672133488803,
+            "LightNeed": 0.5757026062959081
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.549234930062785,
+            "LightNeed": 0.5853705927412497
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5047761337574714,
+            "LightNeed": 0.584633639106272
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5260332863418573,
+            "LightNeed": 0.6108721574918696
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.553381775580536,
+            "LightNeed": 0.5967363195819002
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5931820428685487,
+            "LightNeed": 0.509777819722181
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5583339432154856,
+            "LightNeed": 0.5220817206208626
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.616118866305611,
+            "LightNeed": 0.5802664643006433
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5600879642397901,
+            "LightNeed": 0.7301792127755037
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6443904450914426,
+            "LightNeed": 0.5609570375340479
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5975235885669292,
+            "LightNeed": 0.5627546959352776
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5470877802991193,
+            "LightNeed": 0.7308955164812987
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5335865984813024,
+            "LightNeed": 0.729771324773577
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.47732050525335956,
+            "LightNeed": 0.7104700050331488
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5180725379303146,
+            "LightNeed": 0.7284990787435728
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5635831473290123,
+            "LightNeed": 0.6276293893324495
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4976249982632084,
+            "LightNeed": 0.7299080213631317
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.560048833826443,
+            "LightNeed": 0.6127387308209362
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.516038549490817,
+            "LightNeed": 0.6964653251202716
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5796959136328051,
+            "LightNeed": 0.5843815939442127
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4806055521350579,
+            "LightNeed": 0.5769969496990182
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4939896511077716,
+            "LightNeed": 0.5237667665099236
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5438469822272727,
+            "LightNeed": 0.5989247395091338
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5826219852070897,
+            "LightNeed": 0.6385255499341125
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5580243547763519,
+            "LightNeed": 0.6332918535052339
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6337909814379211,
+            "LightNeed": 0.5719252107333166
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6014183009320628,
+            "LightNeed": 0.547352497069851
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5239126724682783,
+            "LightNeed": 0.6427602051313935
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5463164336986849,
+            "LightNeed": 0.6229003401063865
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5824818716617784,
+            "LightNeed": 0.5645669146002124
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.62362605852567,
+            "LightNeed": 0.5826111808470609
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6278341009685355,
+            "LightNeed": 0.5964048557033872
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5501386955113492,
+            "LightNeed": 0.6862196344780206
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5436115139477331,
+            "LightNeed": 0.5968592041649716
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5226450975918866,
+            "LightNeed": 0.6073974502299125
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5107563679491922,
+            "LightNeed": 0.6345259972805549
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "позднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5162735364735728,
+            "LightNeed": 0.7125622072013467
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5611990824490621,
+            "LightNeed": 0.6713357661650744
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5541555494572823,
+            "LightNeed": 0.6260510617856678
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5145272850044083,
+            "LightNeed": 0.6765099071241877
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5621988578453915,
+            "LightNeed": 0.6203995411357556
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5347615060774086,
+            "LightNeed": 0.6563758478060463
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5918450956057935,
+            "LightNeed": 0.6269674883880542
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5685717326768975,
+            "LightNeed": 0.5865068557742129
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.548217205079837,
+            "LightNeed": 0.631326198692072
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.494402691860193,
+            "LightNeed": 0.5907639449510768
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5702483893555322,
+            "LightNeed": 0.5915962813210618
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5635847702025478,
+            "LightNeed": 0.597638287871862
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4506787605597045,
+            "LightNeed": 0.7638755283166438
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6018122608111893,
+            "LightNeed": 0.5735542500917661
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.501720911875023,
+            "LightNeed": 0.6850693101251698
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5475702988290027,
+            "LightNeed": 0.6015046903963995
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5570713216910802,
+            "LightNeed": 0.59808190403142
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4801846947601381,
+            "LightNeed": 0.6645640800901087
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5738562856504814,
+            "LightNeed": 0.6011326599320841
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5927202330239846,
+            "LightNeed": 0.6232934243528304
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5607240556258385,
+            "LightNeed": 0.5418648049967971
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5195501670835341,
+            "LightNeed": 0.6312213002184351
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "шишки созревают"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5090918678155013,
+            "LightNeed": 0.6344492552837635
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4920317980788847,
+            "LightNeed": 0.6143188707775458
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.559601106978283,
+            "LightNeed": 0.6662025336882949
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5938787207982306,
+            "LightNeed": 0.7081644771987305
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5829113399086296,
+            "LightNeed": 0.6509972633877289
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6044666376005837,
+            "LightNeed": 0.5516974944034596
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5205420093763745,
+            "LightNeed": 0.6436543343398144
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5587801230055328,
+            "LightNeed": 0.5236500824716024
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5186838521531368,
+            "LightNeed": 0.688532982009511
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.542636697912065,
+            "LightNeed": 0.6305107637627899
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.516580102071807,
+            "LightNeed": 0.5722762857096914
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5634357606777413,
+            "LightNeed": 0.6624654702561107
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5003422111957722,
+            "LightNeed": 0.6516493612750036
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4895359444558071,
+            "LightNeed": 0.6857594413438562
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5785363192934216,
+            "LightNeed": 0.5902845683534648
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.49879648663130055,
+            "LightNeed": 0.6185559717775854
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6761255991139773,
+            "LightNeed": 0.5420740131428018
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5747357665230062,
+            "LightNeed": 0.6777169772842323
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6457465519387646,
+            "LightNeed": 0.6221450508791787
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5287565072052443,
+            "LightNeed": 0.7120500754319811
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5037889229119467,
+            "LightNeed": 0.7145231421123219
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5619666553255804,
+            "LightNeed": 0.652246736601183
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5698318820197406,
+            "LightNeed": 0.6124332992921879
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5692321504435273,
+            "LightNeed": 0.5965062694659198
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5065554956565228,
+            "LightNeed": 0.6576478717968984
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5866395663486258,
+            "LightNeed": 0.6769075744005392
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5099769896796016,
+            "LightNeed": 0.6497248614918284
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5695773046499067,
+            "LightNeed": 0.5653676217299919
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5412405066339078,
+            "LightNeed": 0.5635779738733145
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6032263209607124,
+            "LightNeed": 0.5388383723582878
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5422433268008583,
+            "LightNeed": 0.6503386103870865
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5623071904570821,
+            "LightNeed": 0.6264789675460541
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5155927044172334,
+            "LightNeed": 0.691603357106903
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6147076782301731,
+            "LightNeed": 0.5475923895030748
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.530294266703836,
+            "LightNeed": 0.6191991804832121
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5742030150541156,
+            "LightNeed": 0.6035033559819445
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5658633530350714,
+            "LightNeed": 0.548874391452348
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6133265038672254,
+            "LightNeed": 0.6076150467324221
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6016264926279445,
+            "LightNeed": 0.5920882637720897
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5813228751998678,
+            "LightNeed": 0.553268141532731
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5029780814242326,
+            "LightNeed": 0.6550804273551977
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.46644545844770346,
+            "LightNeed": 0.6090320947145952
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5007686245239616,
+            "LightNeed": 0.7438647464958102
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.584056251704305,
+            "LightNeed": 0.6385710794857307
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.538269888389589,
+            "LightNeed": 0.6107986808375572
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5385379287444407,
+            "LightNeed": 0.6012487783943533
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5215260986845691,
+            "LightNeed": 0.6845562512062472
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5571170814786499,
+            "LightNeed": 0.720229561478544
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5897864753540253,
+            "LightNeed": 0.5746686262321852
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5944564470340962,
+            "LightNeed": 0.53356355666112
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "20 - 25 дн"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5777235377292378,
+            "LightNeed": 0.641007356165414
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5916399214310187,
+            "LightNeed": 0.5151038256970364
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.47071872876517623,
+            "LightNeed": 0.7454725642919182
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5446769846374021,
+            "LightNeed": 0.5916078738581918
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5896421145968634,
+            "LightNeed": 0.563076411956789
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.49919131651501547,
+            "LightNeed": 0.6701260817134497
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.577289599884889,
+            "LightNeed": 0.5623997550884521
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4812405225467022,
+            "LightNeed": 0.7373693185523637
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "сосна созревают"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5360080041041607,
+            "LightNeed": 0.5750501303027331
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5123589985990983,
+            "LightNeed": 0.7141149880639601
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5647776021706292,
+            "LightNeed": 0.5972032134251286
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5702121630050657,
+            "LightNeed": 0.5623836277528992
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "10-14 дней"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5165637216232568,
+            "LightNeed": 0.6091135770862078
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.49323375472946995,
+            "LightNeed": 0.6638396674819668
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "в условиях"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5757461024842855,
+            "LightNeed": 0.5159740008415725
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4883521778215669,
+            "LightNeed": 0.6212367811297412
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5484524441013526,
+            "LightNeed": 0.5787083028491746
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5460290257124646,
+            "LightNeed": 0.6424753943650247
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5278725806196438,
+            "LightNeed": 0.5749018328630338
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.568328940174138,
+            "LightNeed": 0.6652811376257298
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5985914524321001,
+            "LightNeed": 0.6100984207218227
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5461815024962776,
+            "LightNeed": 0.626478170137824
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5377302714661718,
+            "LightNeed": 0.5881940998704531
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.534517760116218,
+            "LightNeed": 0.5256427038350054
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4754868277343743,
+            "LightNeed": 0.7548896083735892
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5464862097068847,
+            "LightNeed": 0.5764589076819642
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.557948468828542,
+            "LightNeed": 0.5988038681396962
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5500390568788657,
+            "LightNeed": 0.5904477509653346
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5695847121506105,
+            "LightNeed": 0.6217042540090094
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.514832311560583,
+            "LightNeed": 0.5928453072479372
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.501297986621992,
+            "LightNeed": 0.6255687460824628
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6190737034376984,
+            "LightNeed": 0.634379654165452
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.47534122462216355,
+            "LightNeed": 0.5450777246544676
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.47415024493093555,
+            "LightNeed": 0.5526642600241831
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.530079225686139,
+            "LightNeed": 0.5257384054032915
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6329548819107677,
+            "LightNeed": 0.6278050447848038
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5575610269693551,
+            "LightNeed": 0.5227950914973458
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6308662792482382,
+            "LightNeed": 0.5205815626064105
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.541082217811145,
+            "LightNeed": 0.598482064718417
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5698295868189613,
+            "LightNeed": 0.5926944111554989
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4869626718685745,
+            "LightNeed": 0.5708419620752644
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.664069665784036,
+            "LightNeed": 0.5695250896311164
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "позднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6370510062477227,
+            "LightNeed": 0.5116662561784253
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5992430809618714,
+            "LightNeed": 0.5201285209060235
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6230962155823664,
+            "LightNeed": 0.5272441285067341
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.587736353868762,
+            "LightNeed": 0.5673895430837657
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.49459651226506396,
+            "LightNeed": 0.6677246234757961
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5161832244120494,
+            "LightNeed": 0.5159611966095374
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5404394605622476,
+            "LightNeed": 0.6016137409852019
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5464782400057486,
+            "LightNeed": 0.5610568337333293
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5937118605019196,
+            "LightNeed": 0.5900769883771884
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5091155657565709,
+            "LightNeed": 0.5
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5665234318015783,
+            "LightNeed": 0.6295707371613897
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5453954616958717,
+            "LightNeed": 0.5361418082337188
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5064345865193937,
+            "LightNeed": 0.5381449307732883
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5547289751039768,
+            "LightNeed": 0.5350623275583596
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4972999576250078,
+            "LightNeed": 0.5558800255758483
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5412642795815686,
+            "LightNeed": 0.5361531448323439
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.480403087826374,
+            "LightNeed": 0.5310828798662529
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5635071834420934,
+            "LightNeed": 0.5246855834253216
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.520626336872134,
+            "LightNeed": 0.5938354485062032
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5222926130625036,
+            "LightNeed": 0.6349310656918324
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5567294006282792,
+            "LightNeed": 0.5407365877402873
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5017260602336546,
+            "LightNeed": 0.6013341181871249
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5029507954337186,
+            "LightNeed": 0.6253431387313334
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5511645049271203,
+            "LightNeed": 0.5798827484415248
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5566049765542888,
+            "LightNeed": 0.5230006537645822
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5812882779831438,
+            "LightNeed": 0.59656140658865
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5624598924572725,
+            "LightNeed": 0.5773722151565313
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5106598284593853,
+            "LightNeed": 0.656961016571458
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6075154921866608,
+            "LightNeed": 0.5960058926706459
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5098663932232785,
+            "LightNeed": 0.726824221837537
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5183033670673496,
+            "LightNeed": 0.7078698574262619
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5650716425676726,
+            "LightNeed": 0.6577959070913423
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5385600580913276,
+            "LightNeed": 0.5971898251508898
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5166428324141643,
+            "LightNeed": 0.5966700936173902
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5408121163022256,
+            "LightNeed": 0.574716376412077
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4983841840496087,
+            "LightNeed": 0.5560273955065179
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.48168019298543774,
+            "LightNeed": 0.563962876563615
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.4839300527840674,
+            "LightNeed": 0.5130460946752282
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.47616248780016185,
+            "LightNeed": 0.5543094126983876
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "раннеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5224606777258376,
+            "LightNeed": 0.5660510047276532
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5742192204469592,
+            "LightNeed": 0.5789453748909127
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5334821097839864,
+            "LightNeed": 0.5822050011326548
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5772270464150351,
+            "LightNeed": 0.6138227510704076
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5354134195408331,
+            "LightNeed": 0.5860547332065292
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5109202451366763,
+            "LightNeed": 0.6089835754132246
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5506152739944055,
+            "LightNeed": 0.6517831495551417
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.48124904791227635,
+            "LightNeed": 0.7101729236833673
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.46866861047676545,
+            "LightNeed": 0.6366009751428582
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6292528260131873,
+            "LightNeed": 0.5508378516081458
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5466121454060165,
+            "LightNeed": 0.593573661090752
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5551497314793538,
+            "LightNeed": 0.5616993220819143
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5799548151160693,
+            "LightNeed": 0.5716873301374926
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6454101213715087,
+            "LightNeed": 0.6040836416244505
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Яркое солнце",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5488457410187556,
+            "LightNeed": 0.6297720922409962
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5965327612298961,
+            "LightNeed": 0.532712041505609
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "позднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5479014374631396,
+            "LightNeed": 0.6135789796302042
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.6201225770039341,
+            "LightNeed": 0.567792091163846
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "среднеспелый"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5608543372136934,
+            "LightNeed": 0.5668728882583295
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    },
+    {
+        "confidence": {
+            "WateringNeed": 0.5861339827351095,
+            "LightNeed": 0.5593874135717867
+        },
+        "WateringNeed": "Регулярный полив",
+        "LightNeed": "Полутень",
+        "RipeningPeriod": "Не указано"
+    }
+]
