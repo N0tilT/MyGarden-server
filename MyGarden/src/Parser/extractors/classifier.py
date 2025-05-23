@@ -253,16 +253,15 @@ def extract_fertilizer_info(text):
     return found if found else ["Не указано"]
 
 def main():
-    prepared_data = load_prepared_data("D:\Prog\MyGarden-server\MyGarden\src\Parser\catalogues\stroy_podskazka\data\prepared.json")
+    prepared_data = load_prepared_data("C:\\Users\\timofey.latypov\\Documents\\MyGarden-server\\MyGarden\\src\\Parser\\catalogues\\stroy_podskazka\\data\\prepared.json")
     X, y, mlb = prepare_training_data(prepared_data)
     y["mlb"] = mlb
     models = train_models(X, y)
     save_models(models)
     
     loaded_models = load_models()
-    
-    with open("D:/Prog/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/data/summarized_flowers.json", "r", encoding="utf-8") as f, \
-         open('D:/Prog/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/data/classified_flowers.json', 'w', encoding='utf-8') as out_file:
+    with open("C:\\Users\\timofey.latypov\\Documents\\MyGarden-server\\MyGarden\\src\\Parser\\catalogues\\stroy_podskazka\\data\\summarized_plants.json", "r", encoding="utf-8") as f, \
+         open("C:\\Users\\timofey.latypov\\Documents\\MyGarden-server\\MyGarden\\src\\Parser\\catalogues\\stroy_podskazka\\data\\classified_plants.json", 'w', encoding='utf-8') as out_file:
 
         out_file.write('[\n')
         first_entry = True
@@ -270,6 +269,8 @@ def main():
 
         for plant in ijson.items(f, 'item'):
             processed_plant = predict_plant(plant,models=loaded_models)
+            processed_plant["id"] = plant["id"]
+            processed_plant["link"] = plant["link"].split("|||")[0].strip("/").split("/")[0]
             plant_json = json.dumps(processed_plant, ensure_ascii=False, indent=4)
             formatted_entry = '\n'.join(f'    {line}' for line in plant_json.split('\n'))
             
