@@ -5,12 +5,23 @@ import ijson
 import os
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.multiclass import OneVsRestClassifier
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import MultiLabelBinarizer
+import shutil
+
+
+data = json.load(open("..\\catalogues\\stroy_podskazka\\data\\prepared.json", "r", encoding="utf-8"))
+for idx, plant in enumerate(data):
+    if "labels" not in plant:
+        print(f"Ошибка: Растение {idx} не имеет раздела 'labels'!")
+    elif "WateringNeed" not in plant["labels"]:
+        print(f"Ошибка: Растение {idx} не имеет метки 'WateringNeed'!")
 
 CLASSIFICATION_CONFIG = {
     "target_labels": {
@@ -25,8 +36,9 @@ CLASSIFICATION_CONFIG = {
     },
     "model_params": {
         "tfidf": {
-            "max_features": 5000,
-            "ngram_range": (1, 2)
+            "max_features": None,  # Убрать ограничение
+            "ngram_range": (1, 3), # Расширить диапазон n-грамм
+            "stop_words": None     # Не игнорировать стоп-слова
         },
         "classifier": {
             "C": 1.0,
@@ -66,23 +78,31 @@ def preprocess_plant(plant, section_weights):
 
 
 def prepare_training_data(data):
-    """Подготовка данных для обучения"""
     X, y = [], {"WateringNeed": [], "LightNeed": [], "Fertilizer": []}
     
     for plant in data:
-        text = preprocess_plant(plant, CLASSIFICATION_CONFIG["section_weights"])
-        X.append(text)
+        # Проверка наличия ключа 'labels'
+        if "labels" not in plant:
+            raise ValueError("Отсутствует раздел 'labels' в данных растения!")
         
-        for target in y.keys():
-            if target in plant["labels"]:
-                y[target].append(plant["labels"][target])
-            else:
-                y[target].append(None)
+        # Проверка наличия метки WateringNeed
+        if "WateringNeed" not in plant["labels"]:
+            raise ValueError(f"Растение {plant['id']} не имеет метки 'WateringNeed'!")
+        fert_labels = plant["labels"].get("Fertilizer", [])
+        y["Fertilizer"].append(fert_labels if isinstance(fert_labels, list) else [])
     
     mlb = MultiLabelBinarizer()
     y["Fertilizer"] = mlb.fit_transform(y["Fertilizer"])
     
+    if len(mlb.classes_) < 2:
+        mlb.fit([["минеральные"], ["органические"]])
+    
+    for target in ["WateringNeed", "LightNeed"]:
+        if not any(y[target]):
+            raise ValueError(f"Нет данных для {target}. Проверьте метки в prepared.json!")
+        
     return X, y, mlb
+
 def train_models(X, y):
     """Обучение моделей для каждой цели"""
     models = {}
@@ -99,27 +119,20 @@ def train_models(X, y):
             print(f"Недостаточно данных для обучения {target}. Найдено классов: {len(unique_classes)}")
             continue
         
-        model = Pipeline([
-            ('tfidf', TfidfVectorizer(
-                max_features=CLASSIFICATION_CONFIG["model_params"]["tfidf"]["max_features"],
-                ngram_range=CLASSIFICATION_CONFIG["model_params"]["tfidf"]["ngram_range"]
-            )),
-            ('clf', SVC(
-                C=CLASSIFICATION_CONFIG["model_params"]["classifier"]["C"],
-                kernel=CLASSIFICATION_CONFIG["model_params"]["classifier"]["kernel"],
-                probability=True
-            ))
-        ])
+        try:
+            model = Pipeline([
+                ('tfidf', TfidfVectorizer(
+                    max_features=CLASSIFICATION_CONFIG["model_params"]["tfidf"]["max_features"],
+                    ngram_range=CLASSIFICATION_CONFIG["model_params"]["tfidf"]["ngram_range"]
+                )),
+                    ('clf', LogisticRegression() )
+            ])
         
-        X_train, X_test, y_train, y_test = train_test_split(
-            X_filtered, y_filtered, test_size=0.2, random_state=42)
-        model.fit(X_train, y_train)
-        
-        y_pred = model.predict(X_test)
-        print(f"\nClassification Report for {target}:")
-        print(classification_report(y_test, y_pred))
-        
-        models[target] = model
+            model.fit(X, y["Fertilizer"])
+            models["Fertilizer"] = (model, mlb)
+        except ValueError as e:
+            print(f"Ошибка обучения удобрений: {str(e)}")
+            models["Fertilizer"] = (None, mlb)
     
     mlb = y.pop("mlb", None)
     if mlb:
@@ -190,9 +203,12 @@ def predict_plant(plant_data, models):
     
     if "Fertilizer" in models:
         model, mlb = models["Fertilizer"]
-        proba = model.predict_proba([processed_text])
-        result["Fertilizer"] = mlb.inverse_transform(
-            (proba[0] > 0.5).astype(int))[0]
+        if model is not None:
+            try:
+                proba = model.predict_proba([processed_text])
+                result["Fertilizer"] = mlb.inverse_transform((proba > 0.5).astype(int))[0]
+            except ValueError:
+                result["Fertilizer"] = ["не определено"]
     
     result["RipeningPeriod"] = extract_ripening_period(processed_text)
     
@@ -253,15 +269,15 @@ def extract_fertilizer_info(text):
     return found if found else ["Не указано"]
 
 def main():
-    prepared_data = load_prepared_data("C:\\Users\\timofey.latypov\\Documents\\MyGarden-server\\MyGarden\\src\\Parser\\catalogues\\stroy_podskazka\\data\\prepared.json")
+    prepared_data = load_prepared_data("..\\catalogues\\stroy_podskazka\\data\\prepared.json")
     X, y, mlb = prepare_training_data(prepared_data)
     y["mlb"] = mlb
     models = train_models(X, y)
     save_models(models)
     
     loaded_models = load_models()
-    with open("C:\\Users\\timofey.latypov\\Documents\\MyGarden-server\\MyGarden\\src\\Parser\\catalogues\\stroy_podskazka\\data\\summarized_plants.json", "r", encoding="utf-8") as f, \
-         open("C:\\Users\\timofey.latypov\\Documents\\MyGarden-server\\MyGarden\\src\\Parser\\catalogues\\stroy_podskazka\\data\\classified_plants.json", 'w', encoding='utf-8') as out_file:
+    with open("..\\catalogues\\stroy_podskazka\\data\\summarized_plants.json", "r", encoding="utf-8") as f, \
+         open("..\\catalogues\\stroy_podskazka\\data\\classified_plants.json", 'w', encoding='utf-8') as out_file:
 
         out_file.write('[\n')
         first_entry = True
@@ -289,4 +305,6 @@ def main():
         print(f"\nCompleted processing {count} plants")
         
 if __name__ == "__main__":
-   main()
+    if os.path.exists("trained_models"):
+        shutil.rmtree("trained_models")
+    main()
