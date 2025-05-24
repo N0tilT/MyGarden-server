@@ -1,8 +1,9 @@
 import json
+import asyncio
 from playwright.async_api import async_playwright
 
 EXPECTED_PLANT_NUMBER = 3075-66
-EXPECTED_FLOWER_NUMBER = 2563
+EXPECTED_FLOWER_NUMBER = 4963
 
 BASE_URL = 'https://www.ailita.ru/catalog'
 DRIVER_GET_TIMEOUT_MS = 60*10*1000
@@ -229,3 +230,5 @@ async def extract_flower_info_playwright(plant_info_links, json_filename,error_f
 
         with open(error_filename, "w") as error_file:
             error_file.write(',\n'.join(error_pages))
+
+asyncio.run(ailita_extract())
