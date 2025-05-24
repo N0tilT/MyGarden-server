@@ -37,29 +37,29 @@ RUSSIAN_STOPWORDS = {
     'лучше', 'чуть', 'том', 'нельзя', 'такой', 'им', 'более', 'всегда',
     'конечно', 'всю', 'между'
 }
-
 MONTHS = {
-    'январ': 1, 'феврал': 2, 'март': 3,
-    'апрел': 4, 'май': 5, 'июн': 6,
-    'июл': 7, 'август': 8, 'сентябр': 9,
-    'октябр': 10, 'ноябр': 11, 'декабр': 12
+    'январ': 'январь',
+    'феврал': 'февраль',
+    'март': 'март',
+    'апрел': 'апрель',
+    'май': 'май',
+    'июн': 'июнь',
+    'июл': 'июль',
+    'август': 'август',
+    'сентябр': 'сентябрь',
+    'октябр': 'октябрь',
+    'ноябр': 'ноябрь',
+    'декабр': 'декабрь'
 }
 
-def normalize_time_period(period):
-    days_match = re.search(r'(\d+)\s*-\s*(\d+)\s*(дн|день|дней|дни)', period)
-    if days_match:
-        return f"{days_match.group(1)}-{days_match.group(2)} дней"
-
-    # Нормализация месячных диапазонов
-    month_match = re.search(r'([а-я]+)\s*[-—]\s*([а-я]+)', period)
-    if month_match:
-        start, end = month_match.groups()
-        start_num = next((v for k, v in MONTHS.items() if start.startswith(k)), None)
-        end_num = next((v for k, v in MONTHS.items() if end.startswith(k)), None)
-        if start_num and end_num:
-            return f"{start_num:02d}-{end_num:02d}"
-
-    return period
+def normalize_month_name(month_str):
+    """Нормализация названий месяцев с учетом всех падежей"""
+    month_lower = month_str.lower()
+    # Ищем наиболее длинное совпадение начала слова
+    for prefix, full_name in MONTHS.items():
+        if month_lower.startswith(prefix):
+            return full_name.capitalize()
+    return month_str.capitalize()
 
 def extract_ripening_period(text):
     doc = Doc(text)
@@ -71,7 +71,7 @@ def extract_ripening_period(text):
     time_patterns = [
         (r'\b(\d+)\s*-\s*(\d+)\s+(дн|день|дней|суток)\b', 'days'),
         (r'\b(с|по|до|от)\s+(\d+\s+[а-я]+)', 'month_range'),
-        (r'\b(январ|феврал|март|апрел|май|июн|июл|август|сентябр|октябр|ноябр|декабр)[ья]*\b', 'month'),
+        (r'\b(январ|феврал|март|апрел|ма[йя]|июн|июл|август|сентябр|октябр|ноябр|декабр)[ьья]*\b', 'month'),
         (r'\b(весна|лето|осень|зима)\b', 'season')
     ]
     
@@ -81,9 +81,11 @@ def extract_ripening_period(text):
             if ptype == 'days' and 10 <= int(match.group(1)) <= 365:
                 valid_periods.append(f"Дни: {match.group(1)}-{match.group(2)}")
             elif ptype == 'month':
-                valid_periods.append(f"Месяц: {match.group(1)}")
+                # Исправлено: нормализация названия месяца
+                month_name = normalize_month_name(match.group(1))
+                valid_periods.append(f"Месяц: {month_name}")
             elif ptype == 'season':
-                valid_periods.append(f"Сезон: {match.group(1)}")
+                valid_periods.append(f"Сезон: {match.group(1).capitalize()}")
 
     dates_extractor = DatesExtractor(morph_vocab)
     matches = dates_extractor(text)
@@ -111,6 +113,10 @@ def format_date_fact(fact):
     try:
         # Для диапазонов дат
         if hasattr(fact, 'start') and hasattr(fact, 'end'):
+            start_month = normalize_month_name(fact.start.month.name) if fact.start.month else None
+            end_month = normalize_month_name(fact.end.month.name) if fact.end.month else None
+            if start_month and end_month:
+                return f"{start_month}-{end_month}"
             start = get_date_part(fact.start)
             end = get_date_part(fact.end)
             if start and end:
