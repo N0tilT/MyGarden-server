@@ -3,111 +3,184 @@ import re
 import ijson 
 import torch
 import nltk
-from transformers import pipeline
+import logging
+from transformers import AutoTokenizer
 from nltk import sent_tokenize
+from optimum.onnxruntime import ORTModelForSeq2SeqLM
+
+# Configure logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler()]
+)
 
 try:
     sent_tokenize("test")
 except LookupError:
-    print("Downloading NLTK 'punkt' resources...")
+    logging.info("Downloading NLTK punkt resources...")
     nltk.download("punkt", quiet=True)
-    print("Downloading NLTK 'punkt_tab' resources...")
     nltk.download("punkt_tab", quiet=True)
-    print("NLTK resources downloaded!")
 
-summarizer = pipeline(
-    "summarization",
-    model="IlyaGusev/rut5_base_sum_gazeta",
-    device=0 if torch.cuda.is_available() else -1
+CONFIG = {
+    "max_input_length": 1024,
+    "max_summary_length": 150,
+    "min_summary_length": 40,
+    "num_beams": 2, 
+    "chunk_size": 500,
+    "execution_provider": "CPUExecutionProvider"
+}
+
+logging.info("Initializing tokenizer and model...")
+tokenizer = AutoTokenizer.from_pretrained("IlyaGusev/rut5_base_sum_gazeta")
+logging.info("Tokenizer initialized")
+
+logging.info("Loading summarization model with %s...", CONFIG["execution_provider"])
+summarizer = ORTModelForSeq2SeqLM.from_pretrained(
+    "IlyaGusev/rut5_base_sum_gazeta",
+    provider=CONFIG["execution_provider"],
+    use_cache=False
 )
+logging.info("Summarization model loaded successfully")
 
-def split_text(text, max_chunk_length=500):
+def split_text(text):
+    logging.debug("Splitting text into chunks...")
     sentences = sent_tokenize(text, language="russian")
-    chunks = []
-    current_chunk = []
-    current_length = 0
+    chunks, current_chunk, current_length = [], [], 0
 
     for sent in sentences:
         sent_length = len(sent.split())
-        if current_length + sent_length > max_chunk_length and current_chunk:
+        if current_length + sent_length > CONFIG["chunk_size"] and current_chunk:
             chunks.append(" ".join(current_chunk))
-            current_chunk = []
-            current_length = 0
+            current_chunk, current_length = [], 0
         current_chunk.append(sent)
         current_length += sent_length
 
-    print(len(chunks))
     if current_chunk:
         chunks.append(" ".join(current_chunk))
+    logging.info("Split text into %d chunks", len(chunks))
     return chunks
 
-def process_large_text(text, max_input_length=1024, max_summary_length=150):
-    if len(text.split()) <= max_input_length:
-        return process_plant_data(text, max_summary_length)
+def postprocess_summary(text):
+    logging.debug("Postprocessing summary...")
+    text = re.sub(r'(?<=[.])\s+(?=[А-Я])', ' ', text)
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    seen = set()
+    unique = []
     
+    for sent in sentences:
+        key = re.sub(r'\W+', '', sent).lower()
+        if key not in seen and 15 < len(sent) < 500:
+            seen.add(key)
+            unique.append(sent)
+    
+    logging.debug("Filtered from %d to %d sentences", len(sentences), len(unique))
+    return ' '.join(unique).strip()
+
+def process_large_text(text):
+    logging.info("Processing large text with batch method")
     chunks = split_text(text)
-    print(len(chunks))
-    combined_summary = []
-    
-    for chunk in chunks:
-        chunk_summary = process_plant_data(chunk, max_summary_length)
-        combined_summary.append(chunk_summary)
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()
-    
-    return " ".join(combined_summary)
+    if not chunks:
+        return ""
+
+    logging.debug("Tokenizing %d chunks...", len(chunks))
+    inputs = tokenizer(
+        chunks,
+        max_length=CONFIG["max_input_length"],
+        truncation=True,
+        padding=True,
+        return_tensors="pt"
+    )
+
+    with torch.inference_mode():
+        logging.debug("Generating summaries for batch...")
+        summary_ids = summarizer.generate(
+            **inputs,
+            max_length=CONFIG["max_summary_length"],
+            min_length=CONFIG["min_summary_length"],
+            num_beams=CONFIG["num_beams"],
+            early_stopping=True
+        )
+
+    return " ".join(tokenizer.batch_decode(summary_ids, skip_special_tokens=True))
 
 def clean_text(text):
-    return re.sub(r'\s+[^\s]*$', '', text.strip())
+    cleaned = re.sub(r'\s+[^\s]*$', '', text.strip())
+    logging.debug("Cleaned text: %.50s...", cleaned)
+    return cleaned
 
-def process_plant_data(text,max_length=150):
+def process_plant_data(text):
+    logging.info("Processing plant data with direct method")
     input_length = len(text.split())
     if input_length < 15:
         return text
+
+    dynamic_max_length = min(CONFIG["max_summary_length"], int(input_length * 0.7))
+    logging.debug("Using dynamic max length: %d", dynamic_max_length)
     
-    max_length = min(max_length, int(input_length * 0.7))  
-    min_length = max(int(input_length * 0.2), 10)         
-    
-    
-    with torch.no_grad():  
-        summary = summarizer(
-            text,
-            max_length=max_length,
-            min_length=min_length,
-            do_sample=False,
-            truncation=True,
-            early_stopping=True,
-            no_repeat_ngram_size=3 
-        )[0]['summary_text']
-    return summary
+    inputs = tokenizer(
+        text,
+        max_length=CONFIG["max_input_length"],
+        truncation=True,
+        padding="max_length",
+        return_tensors="pt"
+    )
+
+    with torch.inference_mode():
+        logging.debug("Generating summary...")
+        summary_ids = summarizer.generate(
+            **inputs,
+            max_length=dynamic_max_length,
+            min_length=CONFIG["min_summary_length"],
+            num_beams=CONFIG["num_beams"],
+            early_stopping=True
+        )
+
+    return tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
 def process_text(text):
+    logging.info("Processing combined text")
     parts = list(set(part.strip().lower() for part in text.split('|||') if part.strip()))
     combined = " ".join(parts)
-    if len(combined) > 500: 
-        return process_large_text(combined)
     
-    x = process_plant_data(combined).split()
-    return clean_text(" ".join(list(dict.fromkeys(x))))
+    if len(combined) > 500: 
+        logging.info("Using large text processing (length: %d)", len(combined))
+        processed = process_large_text(combined)
+    else:
+        logging.info("Using plant data processing (length: %d)", len(combined))
+        processed = process_plant_data(combined)
+    
+    x = processed.split()
+    return postprocess_summary(clean_text(" ".join(list(dict.fromkeys(x)))))
 
 def process_data(plant):
-    processed_plant = {}
-    for key, value in plant.items():
-        if key in ("id", "link"):
-            processed_plant[key] = value
-        elif isinstance(value, dict):
-            processed_plant[key] = process_data(value)
-        else:
-            text = process_text(value)
-            print(text)
-            processed_plant[key] = text
-    return processed_plant
+    logging.debug("Processing plant data structure")
+    texts = []
+    
+    def extract_texts(data):
+        for k,v in data.items():
+            if k in ("id", "link"):
+                continue
+            elif isinstance(v, dict):
+                extract_texts(v)
+            elif isinstance(v, str):
+                texts.append(v)
+    
+    extract_texts(plant)
+    logging.info("Extracted %d text fragments", len(texts))
+    combined_text = " ".join(texts)
+    
+    return {
+            "id": plant.get("id"),
+            "link": plant.get("link"),
+            "summary": process_text(combined_text)
+        }
 
 def main():
-    
-    with open("D:/Prog/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/data/merged_flowers.json", "r", encoding="utf-8") as f, \
-         open('D:/Prog/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/data/summarized_flowers.json', 'w', encoding='utf-8') as out_file:
-
+    logging.info("Starting main processing")
+    with open("../catalogues/stroy_podskazka/data/merged_flowers.json", "r", encoding="utf-8") as f, \
+         open('../catalogues/stroy_podskazka/data/summarized_flowers33.json', 'a+', encoding='utf-8') as out_file:
+        
         out_file.write('[\n')
         first_entry = True
         count = 0
@@ -124,14 +197,14 @@ def main():
             
             out_file.write(formatted_entry)
             count += 1
-            print(f"Processed plant {count}", end='\r')
+            logging.info("Processed plant %d (ID: %s)", count, processed_plant.get("id", "unknown"))
             
             del processed_plant
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
 
         out_file.write('\n]')
-        print(f"\nCompleted processing {count} plants")
+        logging.info("Completed processing %d plants", count)
 
 if __name__ == "__main__":
     main()
