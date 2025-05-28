@@ -13,3 +13,12 @@ def get_plants_data():
     cursor.close()
     conn.close()
     return [{'id':row[0],'title':row[2],'description':row[3]}for row in rows]
+
+def get_plant_classification():
+    return []
+def get_plant_articles():
+    return []
+def get_plant_description():
+    return []
+
+    return [{'id':row[0],'title':row[2],'description':row[3]}for row in rows]
