@@ -1,0 +1,290 @@
+[
+    {
+        "id": 0,
+        "title": "patisson"
+    },
+    {
+        "id": 1,
+        "title": "oreshnik"
+    },
+    {
+        "id": 2,
+        "title": "yabloni"
+    },
+    {
+        "id": 3,
+        "title": "chereshnya"
+    },
+    {
+        "id": 4,
+        "title": "goroh"
+    },
+    {
+        "id": 5,
+        "title": "selderej"
+    },
+    {
+        "id": 6,
+        "title": "perec"
+    },
+    {
+        "id": 7,
+        "title": "ezhevika"
+    },
+    {
+        "id": 8,
+        "title": "smorodina"
+    },
+    {
+        "id": 9,
+        "title": "irga"
+    },
+    {
+        "id": 10,
+        "title": "vinograd"
+    },
+    {
+        "id": 11,
+        "title": "kapusta-kolrabi"
+    },
+    {
+        "id": 12,
+        "title": "mandarin"
+    },
+    {
+        "id": 13,
+        "title": "redka"
+    },
+    {
+        "id": 14,
+        "title": "repa"
+    },
+    {
+        "id": 15,
+        "title": "malina"
+    },
+    {
+        "id": 16,
+        "title": "tykva"
+    },
+    {
+        "id": 17,
+        "title": "kabachok"
+    },
+    {
+        "id": 18,
+        "title": "kartofel"
+    },
+    {
+        "id": 19,
+        "title": "persik"
+    },
+    {
+        "id": 20,
+        "title": "kukuruza"
+    },
+    {
+        "id": 21,
+        "title": "pekinskaya"
+    },
+    {
+        "id": 22,
+        "title": "vishnya"
+    },
+    {
+        "id": 23,
+        "title": "hurma"
+    },
+    {
+        "id": 24,
+        "title": "aroniya"
+    },
+    {
+        "id": 25,
+        "title": "baklazhan"
+    },
+    {
+        "id": 26,
+        "title": "kapusta"
+    },
+    {
+        "id": 27,
+        "title": "limon"
+    },
+    {
+        "id": 28,
+        "title": "grushi"
+    },
+    {
+        "id": 29,
+        "title": "apelsin"
+    },
+    {
+        "id": 30,
+        "title": "redis"
+    },
+    {
+        "id": 31,
+        "title": "golubika"
+    },
+    {
+        "id": 32,
+        "title": "zhimolost"
+    },
+    {
+        "id": 33,
+        "title": "kapusta-listovaya"
+    },
+    {
+        "id": 34,
+        "title": "fasol"
+    },
+    {
+        "id": 35,
+        "title": "kapusta-bryusselskaya"
+    },
+    {
+        "id": 36,
+        "title": "luk-dekorativnyj"
+    },
+    {
+        "id": 37,
+        "title": "svekla"
+    },
+    {
+        "id": 38,
+        "title": "soya"
+    },
+    {
+        "id": 39,
+        "title": "alycha"
+    },
+    {
+        "id": 40,
+        "title": "podsolnechnik"
+    },
+    {
+        "id": 41,
+        "title": "tomaty"
+    },
+    {
+        "id": 42,
+        "title": "shelkovica"
+    },
+    {
+        "id": 43,
+        "title": "kryzhovnik"
+    },
+    {
+        "id": 44,
+        "title": "petrushka"
+    },
+    {
+        "id": 45,
+        "title": "mindal"
+    },
+    {
+        "id": 46,
+        "title": "arbuzy"
+    },
+    {
+        "id": 47,
+        "title": "bazilik"
+    },
+    {
+        "id": 48,
+        "title": "greckij-oreh"
+    },
+    {
+        "id": 49,
+        "title": "oblepiha"
+    },
+    {
+        "id": 50,
+        "title": "salat"
+    },
+    {
+        "id": 51,
+        "title": "sliva"
+    },
+    {
+        "id": 52,
+        "title": "granat"
+    },
+    {
+        "id": 53,
+        "title": "fizalis"
+    },
+    {
+        "id": 54,
+        "title": "klubnika"
+    },
+    {
+        "id": 55,
+        "title": "dyni"
+    },
+    {
+        "id": 56,
+        "title": "ukrop"
+    },
+    {
+        "id": 57,
+        "title": "ajva"
+    },
+    {
+        "id": 58,
+        "title": "kizil"
+    },
+    {
+        "id": 59,
+        "title": "kapusta-cvetnaja"
+    },
+    {
+        "id": 60,
+        "title": "brokkoli"
+    },
+    {
+        "id": 61,
+        "title": "inzhir"
+    },
+    {
+        "id": 62,
+        "title": "morkov"
+    },
+    {
+        "id": 63,
+        "title": "luk"
+    },
+    {
+        "id": 64,
+        "title": "kapusta-dekorativnaya"
+    },
+    {
+        "id": 65,
+        "title": "ogurec"
+    },
+    {
+        "id": 66,
+        "title": "aktinidiya"
+    },
+    {
+        "id": 67,
+        "title": "chesnok"
+    },
+    {
+        "id": 68,
+        "title": "klyukva"
+    },
+    {
+        "id": 69,
+        "title": "vigna"
+    },
+    {
+        "id": 70,
+        "title": "abrikos"
+    },
+    {
+        "id": 71,
+        "title": "funduk"
+    }
+]
