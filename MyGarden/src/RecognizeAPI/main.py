@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse  # type: ignore
 from fastapi.middleware.cors import CORSMiddleware  # type: ignore
 import shutil
 from recognizer.identifier import identify
-from data.plant_service import get_plants_data
+from data.plant_service import get_plants_data,get_prefill_data
 from prometheus_fastapi_instrumentator import Instrumentator
 import logging
 import json_log_formatter
@@ -52,8 +52,8 @@ async def search_plant(name: str = Query(...)):
 
 
 @app.get("/prefill")
-async def search_plant(type: str = Query(...)):
-    result = {
+async def prefill_data(type: str = Query(...)):
+    default_response = {
         "type": "",
         "articles": [],
         "labels": {
@@ -63,7 +63,24 @@ async def search_plant(type: str = Query(...)):
         },
         "summary": ""
     }
-    return JSONResponse(content=result)
+    
+    result = get_prefill_data(type)
+    
+    if not result:
+        return JSONResponse(content=default_response)
+    
+    response = {
+        "type": result["type"],
+        "articles": result["articles"],
+        "labels": {
+            "WateringNeed": result["labels"].get("WateringNeed", ""),
+            "LightNeed": result["labels"].get("LightNeed", ""),
+            "Fertilizer": result["labels"].get("Fertilizer", [])
+        },
+        "summary": result["summary"]
+    }
+    
+    return JSONResponse(content=response)
 
 
 @app.get("/health")

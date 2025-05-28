@@ -2,18 +2,6 @@ import os
 import json
 import sqlite3
 
-# with open('./plant_classified_formatted.json', 'r', encoding='utf-8') as file:
-#     plant_classification_data = json.load(file)
-# with open('./plant_articles_formatted.json', 'r', encoding='utf-8') as file:
-#     plant_articles_data = json.load(file)
-# with open('./plant_summary_formatted.json', 'r', encoding='utf-8') as file:
-#     plant_summary_data = json.load(file)
-# with open('./flower_classified_formatted.json', 'r', encoding='utf-8') as file:
-#     flower_classification_data = json.load(file)
-# with open('./flower_articles_formatted.json', 'r', encoding='utf-8') as file:
-#     flower_articles_data = json.load(file)
-# with open('./flower_summary_formatted.json', 'r', encoding='utf-8') as file:
-#     flower_summary_data = json.load(file)
 with open('./flower_types.json', 'r', encoding='utf-8') as file:
     flower_types = json.load(file)
 with open('./plant_types.json', 'r', encoding='utf-8') as file:
@@ -63,6 +51,29 @@ def load_data(classified_path, articles_path, summary_path):
         summary = json.load(f)
     return classified, articles, summary
 
+def insert_plant_types(conn, types):
+    cursor = conn.cursor()
+
+    for type in types:
+        
+        cursor.execute('''
+            INSERT INTO plant_type 
+            (id, title)
+            VALUES (?, ?)
+        ''', (type['id'],type['title']))
+        
+def insert_flower_types(conn, types):
+    cursor = conn.cursor()
+
+    for type in types:
+        
+        cursor.execute('''
+            INSERT INTO flower_type 
+            (id, title)
+            VALUES (?, ?)
+        ''', (type['id'],type['title']))
+
+
 
 def insert_plants(conn, classified, articles_map, summary_data):
     cursor = conn.cursor()
@@ -75,7 +86,7 @@ def insert_plants(conn, classified, articles_map, summary_data):
         for type in plant_types:
             if type['id'] == type_id:
                 plant_type_id = type['id']
-                plant_type_id = type['title']
+                plant_type_title = type['title']
 
         article = next(
             (item for item in articles_map if item["plant_type"] == type_id),
@@ -89,7 +100,6 @@ def insert_plants(conn, classified, articles_map, summary_data):
         articles_json = json.dumps(article, ensure_ascii=False)
         labels = json.dumps(plant['labels'], ensure_ascii=False)
 
-        # Insert into plant_prefill
         cursor.execute('''
             INSERT INTO plant_prefill 
             (plant_type_id, type, articles, labels, summary)
@@ -108,11 +118,10 @@ def insert_flowers(conn, classified, articles_map, summary_data):
         for type in flower_types:
             if type['id'] == type_id:
                 plant_type_id = type['id']
-                plant_type_id = type['title']
-        # Find matching article
+                plant_type_title = type['title']
         article = next(
             (item for item in articles_map if item["plant_type"] == type_id),
-            {}  # Default if not found
+            {}  
         )
         summary = next(
             (item['summary']
@@ -133,19 +142,21 @@ def main():
     conn = sqlite3.connect('./prefill.db')
     create_tables(conn)
 
-    plant_classified, plant_articles = load_data(
+    plant_classified, plant_articles,plant_summary = load_data(
         './plant_classified_formatted.json',
         './plant_articles_formatted.json',
         './plant_summary_formatted.json'
     )
-    insert_plants(conn, plant_classified, plant_articles)
+    insert_plant_types(conn,plant_types)
+    insert_plants(conn, plant_classified, plant_articles,plant_summary)
 
-    flower_classified, flower_articles = load_data(
+    flower_classified, flower_articles,flower_summary = load_data(
         './flower_classified_formatted.json',
         './flower_articles_formatted.json',
         './flower_summary_formatted.json'
     )
-    insert_flowers(conn, flower_classified, flower_articles)
+    insert_flower_types(conn,flower_types)
+    insert_flowers(conn, flower_classified, flower_articles,flower_summary)
 
     conn.commit()
     conn.close()

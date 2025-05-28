@@ -36,8 +36,8 @@ async def translate_to(text,language = "en"):
     return " ".join(translated_chunks)
 
 async def main():
-    with open("../catalogues/stroy_podskazka/data/merged_flowers.json", "r", encoding="utf-8") as f, \
-         open('../catalogues/stroy_podskazka/data/translated_flowers.json', 'w', encoding='utf-8') as out_file:
+    with open("../catalogues/stroy_podskazka/data/merged_plants.json", "r", encoding="utf-8") as f, \
+         open('../catalogues/stroy_podskazka/data/translated_plants.json', 'w', encoding='utf-8') as out_file:
         
         out_file.write('[\n')
         first_entry = True
@@ -58,7 +58,7 @@ async def main():
             combined_text = " ".join(texts)
             
             try:
-                translated_summary = await translate_to_english(combined_text)
+                translated_summary = await translate_to(combined_text,'en')
             except Exception as e:
                 print(f"Ошибка при обработке растения {plant.get('id')}: {e}")
                 translated_summary = "Translation error"
