@@ -1,6 +1,6 @@
-from fastapi import FastAPI, UploadFile, File, Query # type: ignore
-from fastapi.responses import JSONResponse # type: ignore
-from fastapi.middleware.cors import CORSMiddleware # type: ignore
+from fastapi import FastAPI, UploadFile, File, Query  # type: ignore
+from fastapi.responses import JSONResponse  # type: ignore
+from fastapi.middleware.cors import CORSMiddleware  # type: ignore
 import shutil
 from recognizer.identifier import identify
 from data.plant_service import get_plants_data
@@ -28,24 +28,44 @@ app.add_middleware(
 
 plants_data = get_plants_data()
 
+
 @app.post("/recognize")
 async def recognize_plant(image: UploadFile = File(...)):
     with open(f"uploads/{image.filename}", "wb") as buffer:
         shutil.copyfileobj(image.file, buffer)
-    identifiers = identify([f"uploads/{image.filename}"],plants_data,top_number=3)
+    identifiers = identify(
+        [f"uploads/{image.filename}"], plants_data, top_number=3)
     print(identifiers)
-    for index,id in enumerate(identifiers):
+    for index, id in enumerate(identifiers):
         print(f"ФОТО {index+1} ({id[0]})")
         print('\n'.join([f"{x[0]}\t{x[1]:<50}\t\t{x[2]}" for x in id[1]]))
-    result = {"filename": image.filename, "message": '\n'.join([f"\t{x[0]:<50}\t\t{x[1]}" for x in id[1]]), "species": "Example Species"}
-    
+    result = {"filename": image.filename, "message": '\n'.join(
+        [f"\t{x[0]:<50}\t\t{x[1]}" for x in id[1]]), "species": "Example Species"}
+
     return JSONResponse(content=result)
+
 
 @app.get("/search")
 async def search_plant(name: str = Query(...)):
-    result=[x for x in plants_data if name.lower() in ((x['title']).lower())]
+    result = [x for x in plants_data if name.lower() in ((x['title']).lower())]
     return JSONResponse(content=result)
-    
+
+
+@app.get("/prefill")
+async def search_plant(type: str = Query(...)):
+    result = {
+        "type": "",
+        "articles": [],
+        "labels": {
+            "WateringNeed": "",
+            "LightNeed": "",
+            "Fertilizer": []
+        },
+        "summary": ""
+    }
+    return JSONResponse(content=result)
+
+
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
