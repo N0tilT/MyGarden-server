@@ -106,19 +106,16 @@ def prepare_training_data(data):
 def train_models(X, y):
     """Обучение моделей для каждой цели"""
     models = {}
-    
     for target in ["WateringNeed", "LightNeed"]:
         X_filtered, y_filtered = [], []
         for x_item, y_item in zip(X, y[target]):
             if y_item is not None:
                 X_filtered.append(x_item)
                 y_filtered.append(y_item)
-        
         unique_classes = np.unique(y_filtered)
         if len(unique_classes) < 2:
             print(f"Недостаточно данных для обучения {target}. Найдено классов: {len(unique_classes)}")
             continue
-        
         try:
             model = Pipeline([
                 ('tfidf', TfidfVectorizer(
@@ -127,16 +124,13 @@ def train_models(X, y):
                 )),
                     ('clf', LogisticRegression() )
             ])
-        
             model.fit(X, y["Fertilizer"])
             models["Fertilizer"] = (model, mlb)
         except ValueError as e:
             print(f"Ошибка обучения удобрений: {str(e)}")
             models["Fertilizer"] = (None, mlb)
-    
     mlb = y.pop("mlb", None)
     if mlb:
-        # Проверка количества классов
         if len(mlb.classes_) < 2:
             print(f"Недостаточно классов удобрений. Найдено: {len(mlb.classes_)}")
         else:
@@ -158,7 +152,6 @@ def train_models(X, y):
                 models["Fertilizer"] = (model, mlb)
             except ValueError as e:
                 print(f"Ошибка обучения модели удобрений: {str(e)}")
-    
     return models
 
 def save_models(models, path="trained_models"):

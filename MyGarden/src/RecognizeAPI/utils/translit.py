@@ -34,13 +34,3 @@ def reverse_transliterate(text):
             result.append(text[i])
             i += 1
     return ''.join(result)
-
-
-data = 'C:/Users/timofey.latypov/Documents/MyGarden-server/MyGarden/src/Parser/catalogues/stroy_podskazka/links/plant_links_data.txt'
-plant_links = []
-with open(data,'r') as links_file:
-    plant_links = links_file.read().split(',\n')
-
-plant_links = set([link.split("/")[1] for link in plant_links])
-for link in plant_links:
-    print(reverse_transliterate(link))

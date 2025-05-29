@@ -99,10 +99,12 @@ async def extract_articles(types:list[str],links_filename: str):
                 await page.goto(link, timeout=DRIVER_GET_TIMEOUT_MS)
                 articles = await page.query_selector_all('a.box.box-news')
                 titles = [await article.query_selector('span.box-name') for article in articles]
-                current_links = list(zip([f'{base}{await item.get_attribute('href')}' for item in articles],[await item.text_content() for item in titles]))
+                current_links = list(zip([f'{base}{await item.get_attribute('href')}' for item in articles],
+                                         [await item.text_content() for item in titles]))
                 articles = await page.query_selector_all('a.box.box-article')
                 titles = [await article.query_selector('span.box-name') for article in articles]
-                current_links.extend(list(zip([f'{base}{await item.get_attribute('href')}' for item in articles],[await item.text_content() for item in titles])))
+                current_links.extend(list(zip([f'{base}{await item.get_attribute('href')}' 
+                                               for item in articles],[await item.text_content() for item in titles])))
 
                 item_articles.append({"id":index,"type":type,"articles":[{"title":l[1],"link":l[0]} for l in current_links]})
             except Exception as e:

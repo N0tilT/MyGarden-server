@@ -2,7 +2,11 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/api/plant",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -24,7 +28,11 @@
     },
     {
       "UpstreamPathTemplate": "/api/group",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -46,7 +54,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/plant_variety",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -68,7 +78,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/plant_type",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -90,7 +102,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/watering",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -112,7 +126,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/light",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -134,7 +150,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/stage",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -156,7 +174,11 @@
     },
     {
       "UpstreamPathTemplate": "/api/event",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -178,7 +200,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/garden_type",
-      "UpstreamHttpMethod": [ "Get"],
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -200,7 +224,11 @@
     },
     {
       "UpstreamPathTemplate": "/api/garden",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -222,7 +250,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/recognize",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -233,8 +263,24 @@
       "DownstreamPathTemplate": "/recognize"
     },
     {
+      "UpstreamPathTemplate": "/api/prefill",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "recognizeapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/prefill"
+    },
+    {
       "UpstreamPathTemplate": "/api/search",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -246,7 +292,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/auth/login",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -258,7 +306,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/auth/register",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -270,7 +320,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/auth/validate",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -282,7 +334,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/auth/refresh",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -294,7 +348,9 @@
     },
     {
       "UpstreamPathTemplate": "/api/auth/logout",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

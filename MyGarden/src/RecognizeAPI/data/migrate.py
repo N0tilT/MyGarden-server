@@ -9,7 +9,6 @@ def create_tables(conn):
             category TEXT NOT NULL CHECK(category IN ('plant', 'flower')),
             UNIQUE(title, category)  -- Предотвращаем дубликаты
         )''')
-        
         conn.execute('''
         CREATE TABLE IF NOT EXISTS prefill (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -24,26 +23,22 @@ def create_tables(conn):
 def migrate_data(conn):
     with conn:
         cursor = conn.cursor()
-        
         cursor.execute("SELECT title FROM plant_type")
         for (plant_type,) in cursor.fetchall():
             cursor.execute(
                 "INSERT OR IGNORE INTO type (title, category) VALUES (?, 'plant')",
                 (plant_type,)
             )
-        
         cursor.execute("SELECT title FROM flower_type")
         for (flower_type,) in cursor.fetchall():
             cursor.execute(
                 "INSERT OR IGNORE INTO type (title, category) VALUES (?, 'flower')",
                 (flower_type,)
             )
-        
         type_map = {}
         cursor.execute("SELECT id, title, category FROM type")
         for row in cursor.fetchall():
             type_map[(row[1], row[2])] = row[0]
-        
         cursor.execute("SELECT type, articles, labels, summary FROM plant_prefill")
         for plant in cursor.fetchall():
             type_id = type_map.get((plant[0], 'plant'))
@@ -52,8 +47,6 @@ def migrate_data(conn):
                     "INSERT INTO prefill (type_id, category, articles, labels, summary) VALUES (?, 'plant', ?, ?, ?)",
                     (type_id, plant[1], plant[2], plant[3])
                 )
-        
-        # 5. Перенос данных цветов
         cursor.execute("SELECT type, articles, labels, summary FROM flower_prefill")
         for flower in cursor.fetchall():
             type_id = type_map.get((flower[0], 'flower'))

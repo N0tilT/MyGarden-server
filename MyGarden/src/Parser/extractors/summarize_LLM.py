@@ -6,25 +6,20 @@ import re
 from aiohttp import ClientTimeout
 from translate import translate_to
 
-async def process_plant(summary, max_retries=3):
-    
+async def process_plant(summary, max_retries=10):
     url = 'http://127.0.0.1:1234/v1/chat/completions'
     headers = {'Content-Type': 'application/json'}
-    
-    # Паттерны для очистки текста
     cleanup_patterns = [
-        (r'\{\s*«Резюме»:\s*«?', ''),  # Удаление шаблонных фраз
+        (r'\{\s*«Резюме»:\s*«?', ''), 
         (r'»?\s*\}', ''),
         (r'(?i)(резюме|описание|характеристики)[:\s]*', ''),
-        (r'\s+', ' '),  # Удаление лишних пробелов
+        (r'\s+', ' '), 
     ]
-
     def clean_text(text):
         """Постобработка полученного текста"""
         for pattern, replacement in cleanup_patterns:
             text = re.sub(pattern, replacement, text)
         return text.strip()
-
     for attempt in range(max_retries):
         try:
             async with aiohttp.ClientSession() as session:
@@ -35,10 +30,8 @@ async def process_plant(summary, max_retries=3):
                     "max_tokens": -1,
                     "stream": False
                 },timeout=ClientTimeout(total=120)) as response:
-                    
                     if response.status != 200:
                         continue
-
                     response_json = await response.json()
                     content = response_json['choices'][0]['message']['content']
                     if(len(content)<10):
@@ -46,15 +39,11 @@ async def process_plant(summary, max_retries=3):
                     extract = json.loads(content)
                     cleaned_content = clean_text(await translate_to(extract['summary'],"ru"))
                     print(cleaned_content)
-
                     return cleaned_content
-                    
         except Exception as e:
             print(f"Attempt {attempt+1} failed: {str(e)}")
-        
-        await asyncio.sleep(1)  # Задержка между попытками
-
-    return "Failed to generate proper summary"  # Фолбек при неудаче
+        await asyncio.sleep(1)
+    return "Failed to generate proper summary"
 
 async def main():
     with open("../catalogues/stroy_podskazka/data/translated_plants.json", "r", encoding="utf-8") as f, \

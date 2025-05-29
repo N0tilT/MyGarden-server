@@ -52,7 +52,7 @@ async def search_plant(name: str = Query(...)):
 
 
 @app.get("/prefill")
-async def prefill_data(type: str = Query(...)):
+async def search_plant_by_type(type: str = Query(..., title="Название растения", description="Поиск по русскому названию")):
     default_response = {
         "type": "",
         "articles": [],
@@ -63,12 +63,11 @@ async def prefill_data(type: str = Query(...)):
         },
         "summary": ""
     }
-    
     result = get_prefill_data(type)
     
     if not result:
         return JSONResponse(content=default_response)
-    
+
     response = {
         "type": result["type"],
         "articles": result["articles"],
