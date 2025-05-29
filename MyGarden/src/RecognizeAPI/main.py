@@ -39,8 +39,7 @@ async def recognize_plant(image: UploadFile = File(...)):
     for index, id in enumerate(identifiers):
         print(f"ФОТО {index+1} ({id[0]})")
         print('\n'.join([f"{x[0]}\t{x[1]:<50}\t\t{x[2]}" for x in id[1]]))
-    result = {"filename": image.filename, "message": '\n'.join(
-        [f"\t{x[0]:<50}\t\t{x[1]}" for x in id[1]]), "species": "Example Species"}
+    result = {"filename": identifiers[0][1][0][1], "message": identifiers[0][1][0][2]}
 
     return JSONResponse(content=result)
 
